@@ -1,4 +1,5 @@
 #pragma once
+#include "Level.h"
 #include "Player.h"
 #include "Times.h"
 
@@ -16,9 +17,12 @@ private:
 	Player* player;
 
 	Times times;
+	Level* level;
 
 	void initWindow();
 	void initPlayer();
+	void initLevel();
+
 	void updating();
 	void rendering();
 	void pollEvents();

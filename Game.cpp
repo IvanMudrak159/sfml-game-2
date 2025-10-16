@@ -30,6 +30,11 @@ void Game::initPlayer()
 		std::cerr << "Player is nullptr!" << std::endl;
 }
 
+void Game::initLevel()
+{
+	level = new Level();
+}
+
 void Game::updating()
 {
 	pollEvents();
@@ -46,8 +51,9 @@ void Game::rendering()
 {
 	window->clear();
 
+	level->render(*window);
 	player->render(*window);
-	//draw here
+	//render here
 
 	window->display();
 
@@ -84,11 +90,13 @@ Game::Game()
 {
 	initWindow();
 	initPlayer();
+	initLevel();
 }
 
 Game::~Game()
 {
 	delete window;
 	delete player;
+	delete level;
 }
 
