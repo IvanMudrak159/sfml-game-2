@@ -9,7 +9,7 @@
 class SpriteRenderer : public Component, public sf::Drawable
 {
 public:
-	SpriteRenderer(sf::Texture tex);
+	SpriteRenderer(GameObject* owner, sf::Texture tex);
 	~SpriteRenderer() override;
 
 protected:

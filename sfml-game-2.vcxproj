@@ -139,9 +139,13 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameWorld.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="PhysicsSystem.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="RenderSystem.cpp" />
+    <ClCompile Include="RigidBody.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="SpriteRenderer.cpp" />
     <ClCompile Include="Tilemap.cpp" />
@@ -153,9 +157,13 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameWorld.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="PhysicsSystem.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="RenderSystem.h" />
+    <ClInclude Include="RigidBody.h" />
     <ClInclude Include="SpriteRenderer.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Tilemap.h" />

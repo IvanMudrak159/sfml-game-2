@@ -7,6 +7,7 @@ class Component
 {
 
 public:
+    Component(GameObject* owner) : owner(owner) {}
 	virtual ~Component() = default;
     virtual void update(float dt) {}
     virtual void render(sf::RenderWindow& window) {}

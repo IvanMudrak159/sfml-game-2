@@ -1,15 +1,18 @@
 #pragma once
 #include <SFML/Graphics/RenderWindow.hpp>
 
+#include "GameWorld.h"
+
+class Plane;
+
 class CollisionLevel
 {
 private:
 	sf::Vector2f position;
+	GameWorld* gameWorld;
+	Plane* plane;
 
 public:
-	CollisionLevel(float x, float y);
+	CollisionLevel(GameWorld* gameWorld, float x, float y);
 	~CollisionLevel();
-
-	void render(sf::RenderWindow& window);
-
 };

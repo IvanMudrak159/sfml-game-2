@@ -1,9 +1,10 @@
 ﻿#pragma once
 
-#include <SFML/Graphics/Sprite.hpp>
 #include <SFML/System/Vector2.hpp>
 
 #include "GameObject.h"
+
+class RigidBody;
 
 class Player : public GameObject
 {
@@ -11,8 +12,11 @@ private:
     sf::Vector2f velocity;
     float speed;
 
+    RigidBody* rigidBody;
+
 public:
-    Player(sf::Texture texture);
+    Player(GameWorld* gameWorld);
+    ~Player();
     void handleInput();
     void update(float dt);
 };

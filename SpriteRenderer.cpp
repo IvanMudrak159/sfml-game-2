@@ -1,16 +1,19 @@
 #include "SpriteRenderer.h"
 
 #include "GameObject.h"
+#include "GameWorld.h"
 
-SpriteRenderer::SpriteRenderer(sf::Texture tex) : texture(tex), sprite(texture)
+SpriteRenderer::SpriteRenderer(GameObject* owner, sf::Texture tex) : Component(owner), texture(tex), sprite(texture)
 {
-	//sprite.setOrigin(sf::Vector2f(texture.getSize().x / 2.f, texture.getSize().y / 2.f));
 	sprite.setPosition(sf::Vector2f(0.0f, 0.0f));
 	sprite.setTextureRect({ {0, 0}, sf::Vector2i(texture.getSize()) });
+
+	owner->getGameWorld()->getRenderSystem().RegisterGameObject(this);
 }
 
 SpriteRenderer::~SpriteRenderer()
 {
+	owner->getGameWorld()->getRenderSystem().UnregisterGameObject(this);
 }
 
 void SpriteRenderer::draw(sf::RenderTarget& target, sf::RenderStates states) const

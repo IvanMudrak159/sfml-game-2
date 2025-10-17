@@ -1,14 +1,27 @@
 #include "Player.h"
 
+#include <iostream>
 #include "BoxCollider.h"
+#include "RigidBody.h"
 #include "SpriteRenderer.h"
 
-Player::Player(sf::Texture tex)
-	: velocity(0.f, 0.f), speed(200.f)
+Player::Player(GameWorld* gameWorld)  
+	: velocity(0.f, 0.f), speed(10.f), GameObject(gameWorld)
 {
-    addComponent<SpriteRenderer>(tex);
-    addComponent <BoxCollider>(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(32, 32));
 
+    sf::Texture playerTexture;
+    if (!playerTexture.loadFromFile("Sprites/player.png"))
+    {
+        std::cerr << "Error loading texture: " << "PLAYER TEXTURE" << std::endl;
+    }
+
+    addComponent<SpriteRenderer>(playerTexture);
+    addComponent<BoxCollider>(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(32, 32));
+    rigidBody = addComponent<RigidBody>();
+}
+
+Player::~Player()
+{
 }
 
 void Player::handleInput()
@@ -28,10 +41,6 @@ void Player::handleInput()
 void Player::update(float deltaTime)
 {
     handleInput();
-    move(velocity * deltaTime);
+    rigidBody->applyForce(velocity);
 }
 
-//void Player::render(sf::RenderWindow& window) const
-//{
-//    window.draw(sprite);
-//}

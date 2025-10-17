@@ -1,8 +1,9 @@
 #include "Plane.h"
 
 #include "BoxCollider.h"
+#include "GameWorld.h"
 
-Plane::Plane()
+Plane::Plane(GameWorld* gameWorld) : GameObject(gameWorld)
 {
 	vertices = sf::VertexArray (sf::PrimitiveType::Triangles, 6);
 
@@ -27,10 +28,13 @@ Plane::Plane()
 
 	addComponent<BoxCollider>(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(100.0f, 100.0f));
 
+	gameWorld->getRenderSystem().RegisterGameObject(this);
+
 }
 
 Plane::~Plane()
 {
+	gameWorld->getRenderSystem().UnregisterGameObject(this);
 }
 
 void Plane::draw(sf::RenderTarget& target, sf::RenderStates states) const

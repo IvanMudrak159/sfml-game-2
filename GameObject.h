@@ -7,19 +7,22 @@
 #include "Component.h"
 
 
+class GameWorld;
+
 class GameObject : public sf::Transformable, public sf::Drawable
 {
 public:
-    std::vector<std::unique_ptr<Component>> components;
+    GameObject(GameWorld* gameWorld);
+    ~GameObject() override;
+
+	std::vector<std::unique_ptr<Component>> components;
 
     template<typename T, typename... Args>
     T* addComponent(Args&&... args)
     {
         static_assert(std::is_base_of<Component, T>::value, "T must derive from Component");
-        auto comp = std::make_unique<T>(std::forward<Args>(args)...);
+        auto comp = std::make_unique<T>(this, std::forward<Args>(args)...);
         T* ptr = comp.get();
-
-        ptr->owner = this;
 
         components.push_back(std::move(comp));
         return ptr;
@@ -35,6 +38,10 @@ public:
         return nullptr;
     }
 
+    GameWorld* getGameWorld() const;
+
 protected:
+
+    GameWorld* gameWorld;
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };

@@ -1,5 +1,6 @@
 #pragma once
 #include "CollisionLevel.h"
+#include "GameWorld.h"
 #include "Level.h"
 #include "Player.h"
 #include "Times.h"
@@ -19,19 +20,23 @@ private:
 
 	Times times;
 	CollisionLevel* level;
+	GameWorld* gameWorld;
+
 
 	void initWindow();
 	void initPlayer();
 	void initLevel();
+	void initGameWorld();
 
 	void updating();
 	void rendering();
-	void pollEvents();
+	void pollEvents() const;
 
 
 public:
 	Game();
 	~Game();
 
+	GameWorld* getGameWorld() const;
 	void running();
 };

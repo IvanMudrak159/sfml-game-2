@@ -15,25 +15,18 @@ void Game::initWindow()
 
 void Game::initPlayer()
 {
-	sf::Texture playerTexture;
-
-	if (!playerTexture.loadFromFile("Sprites/player.png"))
-	{
-		std::cerr << "Error loading texture: " << "PLAYER TEXTURE" << std::endl;
-	}
-
-
-	player = new Player(playerTexture);
-
-
-	if (!player)
-		std::cerr << "Player is nullptr!" << std::endl;
+	player = new Player(gameWorld);
 }
 
 void Game::initLevel()
 {
 	//level = new Level();
-	level = new CollisionLevel(width * 0.5f, height * 0.5f);
+	level = new CollisionLevel(gameWorld,width * 0.5f, height * 0.5f);
+}
+
+void Game::initGameWorld()
+{
+	gameWorld = new GameWorld(*window);
 }
 
 void Game::updating()
@@ -44,7 +37,7 @@ void Game::updating()
 
 	float dt = times.getDeltaTime();
 
-
+	gameWorld->update(dt);
 	player->update(dt);
 }
 
@@ -52,15 +45,13 @@ void Game::rendering()
 {
 	window->clear();
 
-	level->render(*window);
-	window->draw(*player);
-	//render here
+	gameWorld->render();
 
 	window->display();
 
 }
 
-void Game::pollEvents()
+void Game::pollEvents() const
 {
 	while (const std::optional event = window->pollEvent())
 	{
@@ -90,8 +81,9 @@ void Game::running()
 Game::Game()
 {
 	initWindow();
-	initPlayer();
+	initGameWorld();
 	initLevel();
+	initPlayer();
 }
 
 Game::~Game()
@@ -99,5 +91,11 @@ Game::~Game()
 	delete window;
 	delete player;
 	delete level;
+	delete gameWorld;
+}
+
+GameWorld* Game::getGameWorld() const
+{
+	return gameWorld;
 }
 
