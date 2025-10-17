@@ -1,4 +1,5 @@
 #pragma once
+#include "CollisionLevel.h"
 #include "Level.h"
 #include "Player.h"
 #include "Times.h"
@@ -17,7 +18,7 @@ private:
 	Player* player;
 
 	Times times;
-	Level* level;
+	CollisionLevel* level;
 
 	void initWindow();
 	void initPlayer();

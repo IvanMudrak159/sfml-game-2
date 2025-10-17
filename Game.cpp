@@ -5,8 +5,8 @@
 
 void Game::initWindow()
 {
-	width = 640;
-	height = 360;
+	width = 512;
+	height = 256;
 	title = "SFML with classes";
 	vm = sf::VideoMode({ width, height });
 	window = new sf::RenderWindow(vm, title);
@@ -23,7 +23,7 @@ void Game::initPlayer()
 	}
 
 
-	player = new Player(playerTexture, width * 0.5f, height * 0.5f);
+	player = new Player(playerTexture);
 
 
 	if (!player)
@@ -32,7 +32,8 @@ void Game::initPlayer()
 
 void Game::initLevel()
 {
-	level = new Level();
+	//level = new Level();
+	level = new CollisionLevel(width * 0.5f, height * 0.5f);
 }
 
 void Game::updating()
@@ -52,7 +53,7 @@ void Game::rendering()
 	window->clear();
 
 	level->render(*window);
-	player->render(*window);
+	window->draw(*player);
 	//render here
 
 	window->display();

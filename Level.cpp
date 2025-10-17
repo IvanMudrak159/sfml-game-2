@@ -17,9 +17,9 @@ Level::Level()
     0, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 1,
     };
 
-    map = new TileMap();
+    map = TileMap();
     // create the tilemap from the level definition
-    if (!map->load("Sprites/tilemap.png", { 32, 32 }, level.data(), 16, 8))
+    if (!map.load("Sprites/tilemap.png", { 32, 32 }, level.data(), 16, 8))
     {
 	    std::cerr << "ERROR WHILE LOADING LEVEL" << std::endl;
         return;
@@ -32,5 +32,5 @@ Level::~Level()
 
 void Level::render(sf::RenderWindow& window)
 {
-    window.draw(*map);
+    window.draw(map);
 }

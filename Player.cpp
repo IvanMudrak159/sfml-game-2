@@ -1,12 +1,13 @@
 #include "Player.h"
 
-Player::Player(sf::Texture tex, float x, float y)
-	: texture(tex) ,sprite(texture), velocity(0.f, 0.f), speed(200.f)
+#include "BoxCollider.h"
+#include "SpriteRenderer.h"
+
+Player::Player(sf::Texture tex)
+	: velocity(0.f, 0.f), speed(200.f)
 {
-	//sprite.setTexture(texture);
-	sprite.setPosition(sf::Vector2f(x, y));
-	sprite.setOrigin(sf::Vector2f(texture.getSize().x / 2.f, texture.getSize().y / 2.f));
-    sprite.setTextureRect({ {0, 0}, sf::Vector2i(texture.getSize()) });
+    addComponent<SpriteRenderer>(tex);
+    addComponent <BoxCollider>(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(32, 32));
 
 }
 
@@ -27,15 +28,10 @@ void Player::handleInput()
 void Player::update(float deltaTime)
 {
     handleInput();
-    sprite.move(velocity * deltaTime);
+    move(velocity * deltaTime);
 }
 
-void Player::render(sf::RenderWindow& window) const
-{
-    window.draw(sprite);
-}
-
-sf::Sprite Player::getSprite()
-{
-    return sprite;
-}
+//void Player::render(sf::RenderWindow& window) const
+//{
+//    window.draw(sprite);
+//}

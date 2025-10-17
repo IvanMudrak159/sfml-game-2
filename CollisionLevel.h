@@ -1,18 +1,15 @@
 #pragma once
 #include <SFML/Graphics/RenderWindow.hpp>
 
-#include "Tilemap.h"
-
-
-
-class Level
+class CollisionLevel
 {
 private:
-	TileMap map;
+	sf::Vector2f position;
 
 public:
-	Level();
-	~Level();
+	CollisionLevel(float x, float y);
+	~CollisionLevel();
 
 	void render(sf::RenderWindow& window);
+
 };
