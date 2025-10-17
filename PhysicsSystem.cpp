@@ -14,22 +14,42 @@ void PhysicsSystem::resolveCollision(BoxCollider* a, BoxCollider* b)
 
     sf::FloatRect inter = intersectionOpt.value();
 
+    sf::Vector2f aCenter(
+        a->getWorldBounds().position.x + a->getWorldBounds().size.x / 2.f,
+        a->getWorldBounds().position.y + a->getWorldBounds().size.y / 2.f
+    );
+
+    sf::Vector2f bCenter(
+        b->getWorldBounds().position.x + b->getWorldBounds().size.x / 2.f,
+        b->getWorldBounds().position.y + b->getWorldBounds().size.y / 2.f
+    );
+
     sf::Vector2f mtv;
 
     if (inter.size.x < inter.size.y)
-        mtv = sf::Vector2f(inter.size.x, 0.f);
+    {
+        if (aCenter.x < bCenter.x)
+            mtv = sf::Vector2f(-inter.size.x, 0.f);
+        else
+            mtv = sf::Vector2f(inter.size.x, 0.f);
+    }
     else
-        mtv = sf::Vector2f(0.f, inter.size.y);
+    {
+        if (aCenter.y < bCenter.y)
+            mtv = sf::Vector2f(0.f, -inter.size.y);
+        else
+            mtv = sf::Vector2f(0.f, inter.size.y); 
+    }
 
     if (ra && ra->type == RigidbodyType::Dynamic && (!rb || rb->type != RigidbodyType::Dynamic))
     {
-        a->owner->move(-mtv);
-        ra->velocity = sf::Vector2f(0.f, 0.f);
+        a->owner->move(mtv);
+        ra->velocity = { 0.f, 0.f };
     }
     else if (rb && rb->type == RigidbodyType::Dynamic && (!ra || ra->type != RigidbodyType::Dynamic))
     {
-        b->owner->move(mtv);
-        rb->velocity = sf::Vector2f(0.f, 0.f);
+        b->owner->move(-mtv);
+        rb->velocity = { 0.f, 0.f };
     }
 }
 

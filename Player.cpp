@@ -6,7 +6,7 @@
 #include "SpriteRenderer.h"
 
 Player::Player(GameWorld* gameWorld)  
-	: velocity(0.f, 0.f), speed(10.f), GameObject(gameWorld)
+	: velocity(0.f, 0.f), speed(200.f), GameObject(gameWorld)
 {
 
     sf::Texture playerTexture;
@@ -41,6 +41,6 @@ void Player::handleInput()
 void Player::update(float deltaTime)
 {
     handleInput();
-    rigidBody->applyForce(velocity);
+    rigidBody->setConstForce(velocity);
 }
 
