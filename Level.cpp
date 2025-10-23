@@ -4,7 +4,7 @@
 
 #include "Tilemap.h"
 
-Level::Level()
+Level::Level(GameWorld* gameWorld)
 {
     constexpr std::array level = {
     0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -17,9 +17,22 @@ Level::Level()
     0, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 1,
     };
 
+    for (unsigned int j = 0; j < 8; ++j)
+    {
+        for (unsigned int i = 0; i < 16; ++i)
+        {
+            int number = level[i + j * 16];
+            tiles.push_back(std::make_unique<Tile>(
+                gameWorld, number,
+                sf::Vector2u{ 32, 32 },
+                sf::Vector2f(i * 32.f, j * 32.f)
+            ));
+        }
+    }
+
     map = TileMap();
-    // create the tilemap from the level definition
-    if (!map.load("Sprites/tilemap.png", { 32, 32 }, level.data(), 16, 8))
+
+    if (!map.load("Sprites/tilemap.png", { 32, 32 }, tiles, 16, 8))
     {
 	    std::cerr << "ERROR WHILE LOADING LEVEL" << std::endl;
         return;
@@ -28,9 +41,4 @@ Level::Level()
 
 Level::~Level()
 {
-}
-
-void Level::render(sf::RenderWindow& window)
-{
-    window.draw(map);
 }

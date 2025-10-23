@@ -19,7 +19,8 @@ private:
 	Player* player;
 
 	Times times;
-	CollisionLevel* level;
+	Level* level;
+	//CollisionLevel* level;
 	GameWorld* gameWorld;
 
 

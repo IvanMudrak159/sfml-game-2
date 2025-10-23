@@ -20,8 +20,8 @@ void Game::initPlayer()
 
 void Game::initLevel()
 {
-	//level = new Level();
-	level = new CollisionLevel(gameWorld,width * 0.5f, height * 0.5f);
+	level = new Level(gameWorld);
+	//level = new CollisionLevel(gameWorld,width * 0.5f, height * 0.5f);
 }
 
 void Game::initGameWorld()

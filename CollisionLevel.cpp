@@ -7,7 +7,6 @@ CollisionLevel::CollisionLevel(GameWorld* gameWorld, float x, float y) : gameWor
 	this->position = sf::Vector2f(x,y);
 	plane = new Plane(gameWorld);
 	plane->setPosition(this->position);
-
 }
 
 CollisionLevel::~CollisionLevel()

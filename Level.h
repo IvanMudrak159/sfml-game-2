@@ -9,10 +9,9 @@ class Level
 {
 private:
 	TileMap map;
+	std::vector<std::unique_ptr<Tile>> tiles;
 
 public:
-	Level();
+	Level(GameWorld* gameWorld);
 	~Level();
-
-	void render(sf::RenderWindow& window);
 };
