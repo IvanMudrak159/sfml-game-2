@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include "GameWorld.h"
+
 
 void Game::initWindow()
 {
@@ -9,24 +11,24 @@ void Game::initWindow()
 	height = 256;
 	title = "SFML with classes";
 	vm = sf::VideoMode({ width, height });
-	window = new sf::RenderWindow(vm, title);
+	window = std::make_unique<sf::RenderWindow>(vm, title);
 	window->setFramerateLimit(60);
 }
 
 void Game::initPlayer()
 {
-	player = new Player(gameWorld);
+	player = std::make_unique<Player>(*gameWorld);
 }
 
 void Game::initLevel()
 {
-	level = new Level(gameWorld);
+	level = std::make_unique<Level>(*gameWorld);
 	//level = new CollisionLevel(gameWorld,width * 0.5f, height * 0.5f);
 }
 
 void Game::initGameWorld()
 {
-	gameWorld = new GameWorld(*window);
+	gameWorld = std::make_unique<GameWorld>(*window);
 }
 
 void Game::updating()
@@ -88,14 +90,4 @@ Game::Game()
 
 Game::~Game()
 {
-	delete window;
-	delete player;
-	delete level;
-	delete gameWorld;
 }
-
-GameWorld* Game::getGameWorld() const
-{
-	return gameWorld;
-}
-

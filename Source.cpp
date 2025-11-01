@@ -2,11 +2,9 @@
 
 int main()
 {
-	Game* game = new Game();
+    std::unique_ptr<Game> game = std::make_unique<Game>();
 
-	game->running();
+    game->running();
 
-	delete game;
-
-	return 0;
+    return 0;
 }

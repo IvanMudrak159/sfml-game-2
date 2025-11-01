@@ -4,7 +4,7 @@
 
 #include "Tilemap.h"
 
-Level::Level(GameWorld* gameWorld)
+Level::Level(GameWorld& gameWorld)
 {
     constexpr std::array level = {
     0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,

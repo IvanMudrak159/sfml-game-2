@@ -1,19 +1,19 @@
 #include "GameObject.h"
 #include "GameWorld.h"
 
-GameObject::GameObject(GameWorld* gameWorld) : gameWorld(gameWorld)
+GameObject::GameObject(GameWorld& gameWorld) : gameWorld(gameWorld)
 {
-    gameWorld->getRenderSystem().RegisterGameObject(this);
+    gameWorld.getRenderSystem().RegisterGameObject(this);
 }
 
 GameObject::~GameObject()
 {
-    gameWorld->getRenderSystem().UnregisterGameObject(this);
+    gameWorld.getRenderSystem().UnregisterGameObject(this);
 }
 
 GameWorld* GameObject::getGameWorld() const
 {
-    return gameWorld;
+    return &gameWorld;
 }
 
 void GameObject::draw(sf::RenderTarget& target, sf::RenderStates states) const

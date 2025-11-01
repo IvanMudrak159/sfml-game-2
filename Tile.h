@@ -5,7 +5,7 @@
 class Tile: public GameObject
 {
 public:
-	Tile(GameWorld* gameWorld, int number = 0, sf::Vector2u size = { 32, 32 }, sf::Vector2f pos = { 0,0 });
+	Tile(GameWorld&, int number = 0, sf::Vector2u size = { 32, 32 }, sf::Vector2f pos = { 0,0 });
 	~Tile();
 
 	int getNumber() const;

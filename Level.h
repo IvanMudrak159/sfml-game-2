@@ -12,6 +12,6 @@ private:
 	std::vector<std::unique_ptr<Tile>> tiles;
 
 public:
-	Level(GameWorld* gameWorld);
+	Level(GameWorld& gameWorld);
 	~Level();
 };

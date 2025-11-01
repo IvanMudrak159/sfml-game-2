@@ -5,14 +5,14 @@
 #include "GameWorld.h"
 
 
-Tile::Tile(GameWorld* gameWorld, int number, sf::Vector2u size, sf::Vector2f pos) : GameObject(gameWorld), m_number(number), m_tileSize(size), m_position(pos)
+Tile::Tile(GameWorld& gameWorld, int number, sf::Vector2u size, sf::Vector2f pos) : GameObject(gameWorld), m_number(number), m_tileSize(size), m_position(pos)
 {
-    gameWorld->getRenderSystem().RegisterGameObject(this);
+    gameWorld.getRenderSystem().RegisterGameObject(this);
 }
 
 Tile::~Tile()
 {
-    gameWorld->getRenderSystem().UnregisterGameObject(this);
+    gameWorld.getRenderSystem().UnregisterGameObject(this);
 }
 
 int Tile::getNumber() const

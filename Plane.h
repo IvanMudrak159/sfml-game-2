@@ -10,7 +10,7 @@ private:
 	sf::VertexArray vertices;
 
 public:
-	Plane(GameWorld* gameWorld);
+	Plane(GameWorld& gameWorld);
 	~Plane();
 
 protected:

@@ -12,7 +12,7 @@ class GameWorld;
 class GameObject : public sf::Transformable, public sf::Drawable
 {
 public:
-    GameObject(GameWorld* gameWorld);
+    GameObject(GameWorld& gameWorld);
     ~GameObject() override;
 
 	std::vector<std::unique_ptr<Component>> components;
@@ -42,6 +42,6 @@ public:
 
 protected:
 
-    GameWorld* gameWorld;
+    GameWorld& gameWorld;
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };

@@ -1,6 +1,4 @@
 #pragma once
-#include "CollisionLevel.h"
-#include "GameWorld.h"
 #include "Level.h"
 #include "Player.h"
 #include "Times.h"
@@ -14,14 +12,15 @@ private:
 
 	std::string title;
 	sf::VideoMode vm;
-	sf::RenderWindow* window;
 
-	Player* player;
+	std::unique_ptr<sf::RenderWindow> window;
+	std::unique_ptr<GameWorld> gameWorld;
+	std::unique_ptr<Level> level;
+	std::unique_ptr<Player> player;
 
 	Times times;
-	Level* level;
+
 	//CollisionLevel* level;
-	GameWorld* gameWorld;
 
 
 	void initWindow();
@@ -38,6 +37,5 @@ public:
 	Game();
 	~Game();
 
-	GameWorld* getGameWorld() const;
 	void running();
 };

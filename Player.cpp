@@ -5,7 +5,7 @@
 #include "RigidBody.h"
 #include "SpriteRenderer.h"
 
-Player::Player(GameWorld* gameWorld)  
+Player::Player(GameWorld& gameWorld)  
 	: velocity(0.f, 0.f), speed(200.f), GameObject(gameWorld)
 {
 

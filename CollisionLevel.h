@@ -9,10 +9,10 @@ class CollisionLevel
 {
 private:
 	sf::Vector2f position;
-	GameWorld* gameWorld;
+	GameWorld& gameWorld;
 	Plane* plane;
 
 public:
-	CollisionLevel(GameWorld* gameWorld, float x, float y);
+	CollisionLevel(GameWorld& gameWorld, float x, float y);
 	~CollisionLevel();
 };
