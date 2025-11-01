@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <SFML/System/Vector2.hpp>
 
 #include "PhysicsSystem.h"
 #include "RenderSystem.h"
@@ -34,4 +35,7 @@ public:
 
 	void update(float dt);
 	void render();
+	sf::Vector2i getMousePixelPosition() const;
+	sf::Vector2f getMouseWorldPosition() const;
+
 };

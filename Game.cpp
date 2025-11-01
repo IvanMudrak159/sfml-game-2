@@ -1,7 +1,4 @@
 #include "Game.h"
-
-#include <iostream>
-
 #include "GameWorld.h"
 
 
@@ -17,7 +14,7 @@ void Game::initWindow()
 
 void Game::initPlayer()
 {
-	gameWorld->createObject<Player>("Player", *gameWorld);
+	gameWorld->createObject<Player>("Player", *gameWorld, level.get());
 }
 
 void Game::initLevel()

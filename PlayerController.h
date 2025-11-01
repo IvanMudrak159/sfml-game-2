@@ -2,10 +2,12 @@
 #include "Component.h"
 
 
+class Level;
+
 class PlayerController : public Component
 {
 public:
-	PlayerController(GameObject* owner);
+	PlayerController(GameObject* owner, Level* level);
 	void update(float dt) override;
 
 private:
@@ -13,5 +15,9 @@ private:
 	float speed;
 	RigidBody* rigidBody;
 
-	void handleInput();
+
+	bool wasLeftPressed = false;
+	Level* level;
+	void handleMovement();
+	void handleMouseInput();
 };

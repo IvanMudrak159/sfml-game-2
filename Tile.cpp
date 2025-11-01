@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics/Texture.hpp>
 
+#include "DebugHighlighter.h"
 #include "GameWorld.h"
 
 
@@ -58,6 +59,19 @@ void Tile::buildVertices(sf::Vertex* vertices) const
 void Tile::setTileset(const sf::Texture* tileset)
 {
     m_tileset = tileset;
+}
+
+void Tile::setHighlight()
+{
+    m_highlighted = !m_highlighted;
+	if (m_highlighted)
+	{
+		addComponent<DebugHighlighter>(m_position, sf::Vector2f(m_tileSize), sf::Color::Yellow);
+	}
+    else
+    {
+		removeComponent<DebugHighlighter>();
+    }
 }
 
 void Tile::draw(sf::RenderTarget& target, sf::RenderStates states) const

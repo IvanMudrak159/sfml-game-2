@@ -1,18 +1,16 @@
 #include "BoxCollider.h"
+
+#include "DebugHighlighter.h"
 #include "GameObject.h"
 #include "GameWorld.h"
 
-BoxCollider::BoxCollider(GameObject* owner, sf::Vector2f position, sf::Vector2f size): Component(owner), Drawable(9999)
+BoxCollider::BoxCollider(GameObject* owner, sf::Vector2f position, sf::Vector2f size): Component(owner)
 {
 	boundingBox = sf::FloatRect(position, size);
 
-	debugRect.setSize(size);
-	debugRect.setPosition(position);
-	debugRect.setFillColor(sf::Color::Transparent);
-	debugRect.setOutlineColor(sf::Color::Red);
-	debugRect.setOutlineThickness(1.f);
-
 	owner->getGameWorld()->getPhysicsSystem().Register(this);
+
+	owner->addComponent<DebugHighlighter>(position, size, sf::Color::Red);
 }
 
 BoxCollider::~BoxCollider()
@@ -36,11 +34,4 @@ sf::FloatRect BoxCollider::getWorldBounds() const
 		return sf::FloatRect(owner->getPosition() + sf::Vector2f(boundingBox.position.x, boundingBox.position.y),
 			sf::Vector2f(boundingBox.size.x, boundingBox.size.y));
 	return boundingBox;
-}
-
-void BoxCollider::draw(sf::RenderTarget& target, sf::RenderStates states) const
-{
-	states.transform = owner->getTransform();
-
-	target.draw(debugRect, states);
 }

@@ -2,11 +2,10 @@
 #include <SFML/Graphics/RectangleShape.hpp>
 
 #include "Component.h"
-#include "Drawable.h"
 
 class GameObject;
 
-class BoxCollider : public Component, public Drawable
+class BoxCollider : public Component
 {
 public:
 	BoxCollider(GameObject* owner, sf::Vector2f position, sf::Vector2f size);
@@ -16,10 +15,6 @@ public:
 
 	sf::FloatRect getWorldBounds() const;
 
-protected:
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
-
 private:
 	sf::FloatRect boundingBox;
-	sf::RectangleShape debugRect;
 };

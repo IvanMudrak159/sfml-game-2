@@ -15,12 +15,13 @@ public:
 	void setPosition(sf::Vector2f pos);
 	void buildVertices(sf::Vertex* vertices) const;
 	void setTileset(const sf::Texture* tileset);
-
+	void setHighlight();
 
 protected:
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
 private:
+	bool m_highlighted;
 	int m_number;
 	sf::Vector2u m_tileSize;
 	sf::Vector2f m_position;

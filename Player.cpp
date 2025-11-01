@@ -6,7 +6,7 @@
 #include "RigidBody.h"
 #include "SpriteRenderer.h"
 
-Player::Player(std::string name, GameWorld& gameWorld)
+Player::Player(std::string name, GameWorld& gameWorld, Level* level)
 	: GameObject(name, gameWorld)
 {
 
@@ -18,5 +18,5 @@ Player::Player(std::string name, GameWorld& gameWorld)
 
     addComponent<SpriteRenderer>(playerTexture, 1);
     addComponent<BoxCollider>(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(32, 32));
-    addComponent<PlayerController>();
+    addComponent<PlayerController>(level);
 }

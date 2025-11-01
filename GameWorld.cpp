@@ -22,6 +22,16 @@ void GameWorld::render()
 	renderSystem.update();
 }
 
+sf::Vector2i GameWorld::getMousePixelPosition() const
+{
+	return sf::Mouse::getPosition(renderSystem.getWindow());
+}
+
+sf::Vector2f GameWorld::getMouseWorldPosition() const
+{
+	return renderSystem.getWindow().mapPixelToCoords(sf::Mouse::getPosition(renderSystem.getWindow()));
+}
+
 
 PhysicsSystem& GameWorld::getPhysicsSystem()
 {

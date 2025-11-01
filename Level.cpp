@@ -7,6 +7,10 @@
 
 Level::Level(GameWorld& gameWorld)
 {
+
+	levelSize = sf::Vector2u(16, 8);
+	tileSize = sf::Vector2u(32, 32);
+
     constexpr std::array level = {
     0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
     0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0,
@@ -26,7 +30,7 @@ Level::Level(GameWorld& gameWorld)
         {
 			int index = i + j * 16;
             int tileType = level[index];
-            Tile* tile = TileFactory::createTile(tileType, index, gameWorld, sf::Vector2u{ 32, 32 }, sf::Vector2f(i * 32.f, j * 32.f));
+            Tile* tile = TileFactory::createTile(tileType, index, gameWorld, sf::Vector2u{ tileSize.x, tileSize.y }, sf::Vector2f(i * tileSize.x, j * tileSize.y));
 
 
         	tiles.push_back(tile);
@@ -36,15 +40,9 @@ Level::Level(GameWorld& gameWorld)
 
     map = TileMap();
 
-    if (!map.load("Sprites/tilemap.png", { 32, 32 }, tiles, 16, 8))
+    if (!map.load("Sprites/tilemap.png", { 32, 32 }, tiles, levelSize.x, levelSize.y))
     {
 	    std::cerr << "ERROR WHILE LOADING LEVEL" << std::endl;
         return;
     }
-
-
-}
-
-Level::~Level()
-{
 }

@@ -21,4 +21,6 @@ public:
 	void update();
 	void RegisterGameObject(Drawable* drawable);
 	void UnregisterGameObject(Drawable* drawable);
+	sf::RenderWindow& getWindow() const { return window; }
+
 };
