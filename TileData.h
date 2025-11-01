@@ -10,7 +10,7 @@ struct TileData {
 
 const std::array<TileData, 4> tileSet = { {
     {0, false, "grass"},
-    {1, false,  "water"},
+    {1, true,  "water"},
     {2, true, "tree"},
     {3, false,  "floor"}
 } };
