@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics/RenderWindow.hpp>
+#include "GameWorld.h"
 
 class GameObject;
 
@@ -12,5 +13,5 @@ public:
     virtual void update(float dt) {}
     virtual void render(sf::RenderWindow& window) {}
 
-    GameObject* owner = nullptr;
+    GameObject* owner;
 };

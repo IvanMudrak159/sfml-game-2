@@ -137,6 +137,7 @@
     <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="CollisionLevel.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameWorld.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="CollisionLevel.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="Drawable.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameWorld.h" />

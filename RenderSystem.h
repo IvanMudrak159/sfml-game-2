@@ -1,19 +1,24 @@
 #pragma once
 #include <vector>
 
-#include "GameObject.h"
+class Drawable;
 
+namespace sf
+{
+	class Drawable;
+	class RenderWindow;
+}
 
 class RenderSystem
 {
 private:
-	std::vector<sf::Drawable*> drawables;
+	std::vector<Drawable*> drawables;
 	sf::RenderWindow& window;
 
 public:
 	RenderSystem(sf::RenderWindow& window);
 	~RenderSystem();
-	void update() const;
-	void RegisterGameObject(sf::Drawable* drawable);
-	void UnregisterGameObject(sf::Drawable* drawable);
+	void update();
+	void RegisterGameObject(Drawable* drawable);
+	void UnregisterGameObject(Drawable* drawable);
 };

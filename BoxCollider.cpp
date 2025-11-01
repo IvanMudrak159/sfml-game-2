@@ -2,7 +2,7 @@
 #include "GameObject.h"
 #include "GameWorld.h"
 
-BoxCollider::BoxCollider(GameObject* owner, sf::Vector2f position, sf::Vector2f size): Component(owner)
+BoxCollider::BoxCollider(GameObject* owner, sf::Vector2f position, sf::Vector2f size): Component(owner), Drawable(9999)
 {
 	boundingBox = sf::FloatRect(position, size);
 

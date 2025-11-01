@@ -1,6 +1,8 @@
 #pragma once
-#include "BoxCollider.h"
-#include "RigidBody.h"
+#include <vector>
+
+class RigidBody;
+class BoxCollider;
 
 class PhysicsSystem
 {

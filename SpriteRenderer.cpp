@@ -3,10 +3,11 @@
 #include "GameObject.h"
 #include "GameWorld.h"
 
-SpriteRenderer::SpriteRenderer(GameObject* owner, sf::Texture tex) : Component(owner), texture(tex), sprite(texture)
+SpriteRenderer::SpriteRenderer(GameObject* owner, sf::Texture tex, int layer) : Component(owner), Drawable(layer), texture(tex),
+                                                                     sprite(texture)
 {
 	sprite.setPosition(sf::Vector2f(0.0f, 0.0f));
-	sprite.setTextureRect({ {0, 0}, sf::Vector2i(texture.getSize()) });
+	sprite.setTextureRect({{0, 0}, sf::Vector2i(texture.getSize())});
 
 	owner->getGameWorld()->getRenderSystem().RegisterGameObject(this);
 }

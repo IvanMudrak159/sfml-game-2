@@ -1,7 +1,12 @@
 #pragma once
+
 #include "PhysicsSystem.h"
 #include "RenderSystem.h"
 
+namespace sf
+{
+	class RenderWindow;
+}
 
 class GameWorld
 {
@@ -12,9 +17,10 @@ private:
 public:
 	GameWorld(sf::RenderWindow& window);
 	~GameWorld();
-	void update(float dt);
-	void render() const;
-
 	PhysicsSystem& getPhysicsSystem();
 	RenderSystem& getRenderSystem();
+
+	void update(float dt);
+	void render();
+
 };

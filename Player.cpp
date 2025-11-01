@@ -15,7 +15,7 @@ Player::Player(std::string name, GameWorld& gameWorld)
         std::cerr << "Error loading texture: " << "PLAYER TEXTURE" << std::endl;
     }
 
-    addComponent<SpriteRenderer>(playerTexture);
+    addComponent<SpriteRenderer>(playerTexture, 0);
     addComponent<BoxCollider>(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(32, 32));
     rigidBody = addComponent<RigidBody>();
 }

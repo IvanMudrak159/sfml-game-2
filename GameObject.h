@@ -1,15 +1,17 @@
 #pragma once
 #include <memory>
+#include <string>
 #include <vector>
 #include <SFML/Graphics/Drawable.hpp>
 #include <SFML/Graphics/Transformable.hpp>
 
+#include "Drawable.h"
 #include "Component.h"
-
 
 class GameWorld;
 
-class GameObject : public sf::Transformable, public sf::Drawable
+
+class GameObject : public sf::Transformable, public Drawable
 {
 public:
     GameObject(std::string name, GameWorld& gameWorld);
@@ -26,6 +28,12 @@ public:
         T* ptr = comp.get();
 
         components.push_back(std::move(comp));
+
+        if (auto drawable = dynamic_cast<Drawable*>(ptr))
+        {
+            this->gameWorld.getRenderSystem().RegisterGameObject(drawable);
+        }
+
         return ptr;
     }
 

@@ -14,7 +14,7 @@ void GameWorld::update(float dt)
 	physicsSystem.update(dt);
 }
 
-void GameWorld::render() const
+void GameWorld::render()
 {
 	renderSystem.update();
 }

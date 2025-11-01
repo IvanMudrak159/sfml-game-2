@@ -4,12 +4,13 @@
 #include <SFML/Graphics/Texture.hpp>
 
 #include "Component.h"
+#include "Drawable.h"
 
 
-class SpriteRenderer : public Component, public sf::Drawable
+class SpriteRenderer : public Component, public Drawable
 {
 public:
-	SpriteRenderer(GameObject* owner, sf::Texture tex);
+	SpriteRenderer(GameObject* owner, sf::Texture tex, int layer);
 	~SpriteRenderer() override;
 
 protected:

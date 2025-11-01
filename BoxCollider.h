@@ -2,9 +2,11 @@
 #include <SFML/Graphics/RectangleShape.hpp>
 
 #include "Component.h"
+#include "Drawable.h"
 
+class GameObject;
 
-class BoxCollider : public Component, public sf::Drawable
+class BoxCollider : public Component, public Drawable
 {
 public:
 	BoxCollider(GameObject* owner, sf::Vector2f position, sf::Vector2f size);
