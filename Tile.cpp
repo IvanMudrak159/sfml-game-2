@@ -7,10 +7,6 @@
 
 Tile::Tile(std::string name, GameWorld& gameWorld, int number, sf::Vector2u size, sf::Vector2f pos) : GameObject(name, gameWorld), m_number(number), m_tileSize(size), m_position(pos)
 {
-    if (number == 2)
-    {
-		addComponent<BoxCollider>(sf::Vector2f(pos), sf::Vector2f(size));
-    }
 }
 
 Tile::~Tile()

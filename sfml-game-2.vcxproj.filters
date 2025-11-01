@@ -93,6 +93,9 @@
     <ClCompile Include="Drawable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TileFactory.cpp">
+      <Filter>Source Files\Tilemap</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -145,6 +148,12 @@
     </ClInclude>
     <ClInclude Include="Drawable.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TileFactory.h">
+      <Filter>Header Files\Tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="TileData.h">
+      <Filter>Header Files\Tilemap</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

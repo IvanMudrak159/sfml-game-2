@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+#include "TileFactory.h"
 #include "Tilemap.h"
 
 Level::Level(GameWorld& gameWorld)
@@ -17,17 +18,15 @@ Level::Level(GameWorld& gameWorld)
     0, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 1,
     };
 
+    
+
     for (unsigned int j = 0; j < 8; ++j)
     {
         for (unsigned int i = 0; i < 16; ++i)
         {
-            int number = level[i + j * 16];
-            tiles.push_back(std::make_unique<Tile>(
-                "Tile_" + std::to_string(i + j * 16),
-                gameWorld, number,
-                sf::Vector2u{ 32, 32 },
-                sf::Vector2f(i * 32.f, j * 32.f)
-            ));
+			int index = i + j * 16;
+            int tileType = level[index];
+            tiles.push_back(TileFactory::createTile(tileType, index, gameWorld, sf::Vector2u{ 32, 32 }, sf::Vector2f(i * 32.f, j * 32.f)));
         }
     }
 
