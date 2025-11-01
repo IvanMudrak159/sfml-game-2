@@ -96,15 +96,15 @@ void PhysicsSystem::Unregister(RigidBody* rigidBody)
 
 void PhysicsSystem::update(float dt)
 {
-    for (RigidBody* rigidBody : rigidBodies)
-    {
-        rigidBody->update(dt);
-    }
+    //for (RigidBody* rigidBody : rigidBodies)
+    //{
+    //    rigidBody->update(dt);
+    //}
 
-    for (BoxCollider* boxCollider : colliders)
-    {
-        boxCollider->update(dt);
-    }
+    //for (BoxCollider* boxCollider : colliders)
+    //{
+    //    boxCollider->update(dt);
+    //}
 
     for (size_t i = 0; i < rigidBodies.size(); ++i)
     {

@@ -9,7 +9,7 @@ GameObject::GameObject(std::string name, GameWorld& gameWorld) : Drawable(0), na
 
 GameObject::~GameObject()
 {
-    //gameWorld.getRenderSystem().UnregisterGameObject(this);
+    gameWorld.getRenderSystem().UnregisterGameObject(this);
 
     for (auto& c : components)
     {
@@ -17,6 +17,13 @@ GameObject::~GameObject()
         {
             gameWorld.getRenderSystem().UnregisterGameObject(drawable);
         }
+    }
+}
+
+void GameObject::update(float dt) const
+{
+    for (auto& comp : components) {
+        comp->update(dt);
     }
 }
 

@@ -10,7 +10,6 @@ class CollisionLevel
 private:
 	sf::Vector2f position;
 	GameWorld& gameWorld;
-	Plane* plane;
 
 public:
 	CollisionLevel(GameWorld& gameWorld, float x, float y);

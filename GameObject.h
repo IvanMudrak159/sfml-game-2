@@ -16,8 +16,9 @@ class GameObject : public sf::Transformable, public Drawable
 public:
     GameObject(std::string name, GameWorld& gameWorld);
     ~GameObject() override;
+    void update(float dt) const;
 
-	std::vector<std::unique_ptr<Component>> components;
+    std::vector<std::unique_ptr<Component>> components;
     std::string name;
 
     template<typename T, typename... Args>

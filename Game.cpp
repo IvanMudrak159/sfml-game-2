@@ -17,7 +17,7 @@ void Game::initWindow()
 
 void Game::initPlayer()
 {
-	player = std::make_unique<Player>("Player", *gameWorld);
+	gameWorld->createObject<Player>("Player", *gameWorld);
 }
 
 void Game::initLevel()
@@ -40,7 +40,6 @@ void Game::updating()
 	float dt = times.getDeltaTime();
 
 	gameWorld->update(dt);
-	player->update(dt);
 }
 
 void Game::rendering()

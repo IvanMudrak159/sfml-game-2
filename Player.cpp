@@ -2,11 +2,12 @@
 
 #include <iostream>
 #include "BoxCollider.h"
+#include "PlayerController.h"
 #include "RigidBody.h"
 #include "SpriteRenderer.h"
 
 Player::Player(std::string name, GameWorld& gameWorld)
-	: velocity(0.f, 0.f), speed(200.f), GameObject(name, gameWorld)
+	: GameObject(name, gameWorld)
 {
 
     sf::Texture playerTexture;
@@ -17,30 +18,5 @@ Player::Player(std::string name, GameWorld& gameWorld)
 
     addComponent<SpriteRenderer>(playerTexture, 1);
     addComponent<BoxCollider>(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(32, 32));
-    rigidBody = addComponent<RigidBody>();
+    addComponent<PlayerController>();
 }
-
-Player::~Player()
-{
-}
-
-void Player::handleInput()
-{
-    velocity = sf::Vector2f(0.0f, 0.0f);
-
-    if (isKeyPressed(sf::Keyboard::Key::W))
-        velocity.y = -speed;
-    if (isKeyPressed(sf::Keyboard::Key::S))
-        velocity.y = speed;
-    if (isKeyPressed(sf::Keyboard::Key::A))
-        velocity.x = -speed;
-    if (isKeyPressed(sf::Keyboard::Key::D))
-        velocity.x = speed;
-}
-
-void Player::update(float deltaTime)
-{
-    handleInput();
-    rigidBody->setConstForce(velocity);
-}
-

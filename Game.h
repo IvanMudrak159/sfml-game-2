@@ -16,7 +16,6 @@ private:
 	std::unique_ptr<sf::RenderWindow> window;
 	std::unique_ptr<GameWorld> gameWorld;
 	std::unique_ptr<Level> level;
-	std::unique_ptr<Player> player;
 
 	Times times;
 

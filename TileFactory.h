@@ -9,5 +9,5 @@ class Tile;
 class TileFactory
 {
 public:
-	static std::unique_ptr<Tile> createTile(int type, int index, GameWorld& gameWorld, sf::Vector2u size, sf::Vector2f pos);
+	static Tile* createTile(int type, int index, GameWorld& gameWorld, sf::Vector2u size, sf::Vector2f pos);
 };

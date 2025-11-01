@@ -31,6 +31,8 @@ void RigidBody::setConstForce(const sf::Vector2f& force)
 
 void RigidBody::update(float dt)
 {
+	Component::update(dt);
+
 	if (type == RigidbodyType::Dynamic && owner)
 	{
 		owner->move(velocity * dt);

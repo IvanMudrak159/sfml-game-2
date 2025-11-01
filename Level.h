@@ -9,7 +9,7 @@ class Level
 {
 private:
 	TileMap map;
-	std::vector<std::unique_ptr<Tile>> tiles;
+	std::vector<Tile*> tiles;
 
 public:
 	Level(GameWorld& gameWorld);

@@ -26,7 +26,11 @@ Level::Level(GameWorld& gameWorld)
         {
 			int index = i + j * 16;
             int tileType = level[index];
-            tiles.push_back(TileFactory::createTile(tileType, index, gameWorld, sf::Vector2u{ 32, 32 }, sf::Vector2f(i * 32.f, j * 32.f)));
+            Tile* tile = TileFactory::createTile(tileType, index, gameWorld, sf::Vector2u{ 32, 32 }, sf::Vector2f(i * 32.f, j * 32.f));
+
+
+        	tiles.push_back(tile);
+
         }
     }
 
@@ -37,6 +41,8 @@ Level::Level(GameWorld& gameWorld)
 	    std::cerr << "ERROR WHILE LOADING LEVEL" << std::endl;
         return;
     }
+
+
 }
 
 Level::~Level()

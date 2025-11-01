@@ -37,6 +37,12 @@
     <Filter Include="Source Files\Tilemap">
       <UniqueIdentifier>{9986371c-c2d5-4c54-b583-ce819d7949c6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Scripts">
+      <UniqueIdentifier>{33377b24-103c-4542-a6d5-34233fe0fe3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scripts">
+      <UniqueIdentifier>{1432fae4-7b1c-4b44-8c8f-5d2937a3e11d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -96,6 +102,9 @@
     <ClCompile Include="TileFactory.cpp">
       <Filter>Source Files\Tilemap</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerController.cpp">
+      <Filter>Source Files\Scripts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -154,6 +163,9 @@
     </ClInclude>
     <ClInclude Include="TileData.h">
       <Filter>Header Files\Tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerController.h">
+      <Filter>Header Files\Scripts</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
