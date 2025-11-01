@@ -5,8 +5,8 @@
 #include "RigidBody.h"
 #include "SpriteRenderer.h"
 
-Player::Player(GameWorld& gameWorld)  
-	: velocity(0.f, 0.f), speed(200.f), GameObject(gameWorld)
+Player::Player(std::string name, GameWorld& gameWorld)
+	: velocity(0.f, 0.f), speed(200.f), GameObject(name, gameWorld)
 {
 
     sf::Texture playerTexture;

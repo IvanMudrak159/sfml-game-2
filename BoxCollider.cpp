@@ -7,8 +7,9 @@ BoxCollider::BoxCollider(GameObject* owner, sf::Vector2f position, sf::Vector2f 
 	boundingBox = sf::FloatRect(position, size);
 
 	debugRect.setSize(size);
+	debugRect.setPosition(position);
 	debugRect.setFillColor(sf::Color::Transparent);
-	debugRect.setOutlineColor(sf::Color::Green);
+	debugRect.setOutlineColor(sf::Color::Red);
 	debugRect.setOutlineThickness(1.f);
 
 	owner->getGameWorld()->getPhysicsSystem().Register(this);

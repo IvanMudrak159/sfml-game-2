@@ -12,10 +12,11 @@ class GameWorld;
 class GameObject : public sf::Transformable, public sf::Drawable
 {
 public:
-    GameObject(GameWorld& gameWorld);
+    GameObject(std::string name, GameWorld& gameWorld);
     ~GameObject() override;
 
 	std::vector<std::unique_ptr<Component>> components;
+    std::string name;
 
     template<typename T, typename... Args>
     T* addComponent(Args&&... args)

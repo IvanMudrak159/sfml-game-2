@@ -17,7 +17,7 @@ void Game::initWindow()
 
 void Game::initPlayer()
 {
-	player = std::make_unique<Player>(*gameWorld);
+	player = std::make_unique<Player>("Player", *gameWorld);
 }
 
 void Game::initLevel()

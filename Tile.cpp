@@ -5,14 +5,16 @@
 #include "GameWorld.h"
 
 
-Tile::Tile(GameWorld& gameWorld, int number, sf::Vector2u size, sf::Vector2f pos) : GameObject(gameWorld), m_number(number), m_tileSize(size), m_position(pos)
+Tile::Tile(std::string name, GameWorld& gameWorld, int number, sf::Vector2u size, sf::Vector2f pos) : GameObject(name, gameWorld), m_number(number), m_tileSize(size), m_position(pos)
 {
-    gameWorld.getRenderSystem().RegisterGameObject(this);
+    if (number == 2)
+    {
+		addComponent<BoxCollider>(sf::Vector2f(pos), sf::Vector2f(size));
+    }
 }
 
 Tile::~Tile()
 {
-    gameWorld.getRenderSystem().UnregisterGameObject(this);
 }
 
 int Tile::getNumber() const
@@ -64,7 +66,9 @@ void Tile::setTileset(const sf::Texture* tileset)
 
 void Tile::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    if (!m_tileset) return; // No texture loaded yet
+    GameObject::draw(target, states);
+
+	if (!m_tileset) return; // No texture loaded yet
 
     // Create vertex array for this tile
     sf::Vertex vertices[6];
@@ -73,6 +77,5 @@ void Tile::draw(sf::RenderTarget& target, sf::RenderStates states) const
     // Apply the tileset texture
     states.texture = m_tileset;
 
-    // Draw the tile
     target.draw(vertices, 6, sf::PrimitiveType::Triangles, states);
 }

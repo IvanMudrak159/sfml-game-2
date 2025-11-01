@@ -15,7 +15,7 @@ private:
     RigidBody* rigidBody;
 
 public:
-    Player(GameWorld& gameWorld);
+    Player(std::string name, GameWorld& gameWorld);
     ~Player();
     void handleInput();
     void update(float dt);

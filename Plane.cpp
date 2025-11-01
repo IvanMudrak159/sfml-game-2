@@ -3,7 +3,7 @@
 #include "BoxCollider.h"
 #include "GameWorld.h"
 
-Plane::Plane(GameWorld& gameWorld) : GameObject(gameWorld)
+Plane::Plane(std::string name, GameWorld& gameWorld) : GameObject(name, gameWorld)
 {
 	vertices = sf::VertexArray (sf::PrimitiveType::Triangles, 6);
 

@@ -23,6 +23,7 @@ Level::Level(GameWorld& gameWorld)
         {
             int number = level[i + j * 16];
             tiles.push_back(std::make_unique<Tile>(
+                "Tile_" + std::to_string(i + j * 16),
                 gameWorld, number,
                 sf::Vector2u{ 32, 32 },
                 sf::Vector2f(i * 32.f, j * 32.f)

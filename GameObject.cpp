@@ -1,7 +1,7 @@
 #include "GameObject.h"
 #include "GameWorld.h"
 
-GameObject::GameObject(GameWorld& gameWorld) : gameWorld(gameWorld)
+GameObject::GameObject(std::string name, GameWorld& gameWorld) : name(name), gameWorld(gameWorld)
 {
     gameWorld.getRenderSystem().RegisterGameObject(this);
 }
