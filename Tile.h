@@ -16,7 +16,6 @@ public:
 	void buildVertices(sf::Vertex* vertices) const;
 	void setTileset(const sf::Texture* tileset);
 	void setHighlight();
-
 protected:
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 

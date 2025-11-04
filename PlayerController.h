@@ -17,7 +17,11 @@ private:
 
 
 	bool wasLeftPressed = false;
+	bool wasRightPressed = false;
 	Level* level;
 	void handleMovement();
 	void handleMouseInput();
+
+	void OnLeftMouseButtonPressed();
+	void OnRightMouseButtonPressed();
 };

@@ -10,7 +10,7 @@ BoxCollider::BoxCollider(GameObject* owner, sf::Vector2f position, sf::Vector2f 
 
 	owner->getGameWorld()->getPhysicsSystem().Register(this);
 
-	owner->addComponent<DebugHighlighter>(position, size, sf::Color::Red);
+	//owner->addComponent<DebugHighlighter>(position, size, sf::Color::Red);
 }
 
 BoxCollider::~BoxCollider()

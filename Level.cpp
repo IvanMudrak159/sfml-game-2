@@ -2,47 +2,85 @@
 
 #include <iostream>
 
+#include "AStar.h"
+#include "DebugAIGridRenderer.h"
 #include "TileFactory.h"
 #include "Tilemap.h"
 
 Level::Level(GameWorld& gameWorld)
 {
-
 	levelSize = sf::Vector2u(16, 8);
 	tileSize = sf::Vector2u(32, 32);
 
-    constexpr std::array level = {
-    0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-    0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0,
-    1, 1, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3,
-    0, 1, 0, 0, 2, 0, 3, 3, 3, 0, 1, 1, 1, 0, 0, 0,
-    0, 1, 1, 0, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 0, 0,
-    0, 0, 1, 0, 3, 0, 2, 2, 0, 0, 1, 1, 1, 1, 2, 0,
-    2, 0, 1, 0, 3, 0, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1,
-    0, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 1,
-    };
-
-    
-
-    for (unsigned int j = 0; j < 8; ++j)
-    {
-        for (unsigned int i = 0; i < 16; ++i)
-        {
-			int index = i + j * 16;
-            int tileType = level[index];
-            Tile* tile = TileFactory::createTile(tileType, index, gameWorld, sf::Vector2u{ tileSize.x, tileSize.y }, sf::Vector2f(i * tileSize.x, j * tileSize.y));
+	constexpr std::array level = {
+		0, 0, 0, 0, 2, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+		0, 0, 0, 0, 2, 1, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0,
+		1, 1, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3,
+		0, 1, 0, 0, 2, 0, 3, 3, 3, 0, 1, 1, 1, 0, 0, 0,
+		0, 1, 1, 0, 2, 3, 3, 0, 0, 0, 1, 1, 1, 2, 0, 0,
+		0, 0, 1, 0, 2, 0, 2, 2, 0, 0, 1, 1, 1, 1, 2, 0,
+		2, 0, 1, 0, 0, 0, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1,
+		0, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 1,
+	};
 
 
-        	tiles.push_back(tile);
+	for (unsigned int j = 0; j < levelSize.y; ++j)
+	{
+		for (unsigned int i = 0; i < levelSize.x; ++i)
+		{
+			int index = i + j * levelSize.x;
+			int tileType = level[index];
+			Tile* tile = TileFactory::createTile(tileType, index, gameWorld, sf::Vector2u{tileSize.x, tileSize.y},
+			                                     sf::Vector2f(i * tileSize.x, j * tileSize.y));
 
-        }
-    }
+			tiles.push_back(tile);
+		}
+	}
 
-    map = TileMap();
+	map = TileMap();
 
-    if (!map.load("Sprites/tilemap.png", { 32, 32 }, tiles, levelSize.x, levelSize.y))
-    {
-	    std::cerr << "ERROR WHILE LOADING LEVEL" << std::endl;
-        return;
-    }
+	if (!map.load("Sprites/tilemap.png", tileSize, tiles, levelSize.x, levelSize.y))
+	{
+		std::cerr << "ERROR WHILE LOADING LEVEL" << std::endl;
+		return;
+	}
+
+	mapAI = std::make_unique<MapAI>(levelSize, tileSize);
+	mapAI->generateFromTiles(tiles);
+
+	GameObject* debugGO = gameWorld.createGameObject("AIDebug");
+	debugGO->addComponent<DebugAIGridRenderer>(mapAI.get());
 }
+
+Tile* Level::GetTile(int x, int y) const
+{
+	if (x < 0 || y < 0 || x >= levelSize.x || y >= levelSize.y)
+	{
+		return nullptr;
+	}
+	return tiles[x + y * levelSize.x];
+}
+
+void Level::GoToTile(sf::Vector2i startTile, sf::Vector2i goalTile) const
+{
+	mapAI->ClearPath();
+
+	NodeAI* startNode = mapAI->getNode(startTile);
+	NodeAI* goalNode = mapAI->getNode(goalTile);
+
+
+	AStar astar;
+	auto path = astar.findPath(startNode, goalNode);
+
+	for (NodeAI* node : path)
+	{
+		node->isInPath = true;
+	}
+}
+
+void Level::ClearPath() const
+{
+	mapAI->ClearPath();
+}
+
+

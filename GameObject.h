@@ -69,17 +69,20 @@ public:
     template<typename T>
     T* getComponent() const
     {
-        for (auto& c : components) {
-            if (auto ptr = dynamic_cast<T*>(c.get()))
+        for (auto& c : components)
+        {
+	        if (T* ptr = dynamic_cast<T*>(c.get()))
                 return ptr;
         }
         return nullptr;
     }
 
+    bool hasCollider() const;
+
+
     GameWorld* getGameWorld() const;
 
 protected:
-
     GameWorld& gameWorld;
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };

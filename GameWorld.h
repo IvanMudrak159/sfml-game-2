@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <string>
 #include <SFML/System/Vector2.hpp>
 
 #include "PhysicsSystem.h"
@@ -28,6 +29,8 @@ public:
 		objects.push_back(std::move(obj));
 		return ptr;
 	}
+
+	GameObject* createGameObject(const std::string& name);
 
 	GameWorld(sf::RenderWindow& window);
 	PhysicsSystem& getPhysicsSystem();

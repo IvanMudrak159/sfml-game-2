@@ -1,6 +1,7 @@
 #include "GameObject.h"
 #include <SFML/Graphics/RenderStates.hpp>
 #include "GameWorld.h"
+#include "BoxCollider.h"
 
 GameObject::GameObject(std::string name, GameWorld& gameWorld) : Drawable(0), name(name), gameWorld(gameWorld)
 {
@@ -25,6 +26,11 @@ void GameObject::update(float dt) const
     for (auto& comp : components) {
         comp->update(dt);
     }
+}
+
+bool GameObject::hasCollider() const
+{
+    return getComponent<BoxCollider>() != nullptr;
 }
 
 GameWorld* GameObject::getGameWorld() const

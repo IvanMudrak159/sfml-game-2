@@ -3,6 +3,14 @@
 #include "GameObject.h"
 
 
+GameObject* GameWorld::createGameObject(const std::string& name)
+{
+	auto obj = std::make_unique<GameObject>(name, *this);
+	GameObject* ptr = obj.get();
+	objects.push_back(std::move(obj));
+	return ptr;
+}
+
 GameWorld::GameWorld(sf::RenderWindow& window): renderSystem(window)
 {
 }

@@ -1,8 +1,6 @@
 #include "PlayerController.h"
-
 #include "Level.h"
 #include "RigidBody.h"
-#include "Tile.h"
 
 void PlayerController::update(float dt)
 {
@@ -30,24 +28,54 @@ void PlayerController::handleMovement()
 
 void PlayerController::handleMouseInput()
 {
+	OnLeftMouseButtonPressed();
+	OnRightMouseButtonPressed();
+}
+
+void PlayerController::OnLeftMouseButtonPressed()
+{
     bool isPressed = isButtonPressed(sf::Mouse::Button::Left);
 
     if (isPressed && !wasLeftPressed)
     {
-		sf::Vector2f worldPos = owner->getGameWorld()->getMouseWorldPosition();
+        sf::Vector2f mouseWorldPos = owner->getGameWorld()->getMouseWorldPosition();
+        sf::Vector2f playerPos = owner->getPosition();
 
-        int tileX = static_cast<int>(worldPos.x) / level->GetTileSize().x;
-        int tileY = static_cast<int>(worldPos.y) / level->GetTileSize().y;
+        auto getTileFromPosition = [&](sf::Vector2f pos) -> sf::Vector2i {
+            return sf::Vector2i(
+                static_cast<int>(pos.x) / level->GetTileSize().x,
+                static_cast<int>(pos.y) / level->GetTileSize().y
+            );
+            };
 
-        if (tileX >= 0 && tileX < level->GetLevelSize().x && tileY >= 0 && tileY < level->GetLevelSize().y)
+        sf::Vector2i playerTile = getTileFromPosition(playerPos);
+        sf::Vector2i mouseTile = getTileFromPosition(mouseWorldPos);
+
+        //std::cout << "Player Tile: (" << playerTile.x << ", " << playerTile.y << ")\n";
+        //std::cout << "Player pos: (" << playerPos.x << ", " << playerPos.y << ")\n";
+
+        //std::cout << "Mouse Tile: (" << mouseTile.x << ", " << mouseTile.y << ")\n";
+        //std::cout << "Mouse world pos: (" << mouseWorldPos.x << ", " << mouseWorldPos.y << ")\n";
+
+        if (mouseTile.x >= 0 && mouseTile.x < level->GetLevelSize().x &&
+            mouseTile.y >= 0 && mouseTile.y < level->GetLevelSize().y)
         {
-            Tile& tile = level->getTile(tileX, tileY);
-            tile.setHighlight();
+            level->GoToTile(playerTile, mouseTile);
         }
     }
-	wasLeftPressed = isPressed;
+    wasLeftPressed = isPressed;
 }
 
+void PlayerController::OnRightMouseButtonPressed()
+{
+    bool isPressed = isButtonPressed(sf::Mouse::Button::Right);
+
+    if (isPressed && !wasRightPressed)
+    {
+        level->ClearPath();
+    }
+    wasRightPressed = isPressed;
+}
 
 PlayerController::PlayerController(GameObject* owner, Level* level) : Component(owner), velocity(0.f, 0.f), speed(200.f), level(level)
 {

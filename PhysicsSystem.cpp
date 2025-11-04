@@ -96,16 +96,6 @@ void PhysicsSystem::Unregister(RigidBody* rigidBody)
 
 void PhysicsSystem::update(float dt)
 {
-    //for (RigidBody* rigidBody : rigidBodies)
-    //{
-    //    rigidBody->update(dt);
-    //}
-
-    //for (BoxCollider* boxCollider : colliders)
-    //{
-    //    boxCollider->update(dt);
-    //}
-
     for (size_t i = 0; i < rigidBodies.size(); ++i)
     {
         for (size_t j = 0; j < colliders.size(); ++j)
@@ -120,7 +110,7 @@ void PhysicsSystem::update(float dt)
 
             if (a->getWorldBounds().findIntersection(b->getWorldBounds()))
             {
-                std::cout << "FOUND INTERSECTION" << std::endl;
+                //std::cout << "FOUND INTERSECTION" << std::endl;
                 resolveCollision(a, b);
             }
         }

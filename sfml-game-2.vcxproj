@@ -134,6 +134,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AStar.cpp" />
     <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="CollisionLevel.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -143,6 +144,8 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameWorld.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="MapAI.cpp" />
+    <ClCompile Include="NodeAI.cpp" />
     <ClCompile Include="PhysicsSystem.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -157,15 +160,19 @@
     <ClCompile Include="Times.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AStar.h" />
     <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="CollisionLevel.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="DebugAIGridRenderer.h" />
     <ClInclude Include="DebugHighlighter.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameWorld.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="MapAI.h" />
+    <ClInclude Include="NodeAI.h" />
     <ClInclude Include="PhysicsSystem.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="Player.h" />
