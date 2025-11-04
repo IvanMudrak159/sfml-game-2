@@ -17,18 +17,18 @@ protected:
 
         sf::RectangleShape rect;
         rect.setSize(sf::Vector2f(
-            mapAI->getTileSize().x - 2,
-            mapAI->getTileSize().y - 2
+            mapAI->GetTileSize().x - 2,
+            mapAI->GetTileSize().y - 2
         ));
 
-        sf::Vector2u size = mapAI->getSize();
-        sf::Vector2u tileSize = mapAI->getTileSize();
+        sf::Vector2u size = mapAI->GetLevelSize();
+        sf::Vector2u tileSize = mapAI->GetTileSize();
 
         for (unsigned int y = 0; y < size.y; ++y)
         {
             for (unsigned int x = 0; x < size.x; ++x)
             {
-                NodeAI* node = mapAI->getNode(sf::Vector2i(x,y));
+                NodeAI* node = mapAI->GetNode(sf::Vector2i(x,y));
 
                 if (!node) continue;
 

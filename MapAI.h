@@ -17,9 +17,9 @@ public:
     ~MapAI();
 
     void ClearPath() const;
-    sf::Vector2u getTileSize() const { return tileSize; }
-    sf::Vector2u getSize() const { return size; }
+    sf::Vector2u GetTileSize() const { return tileSize; }
+    sf::Vector2u GetLevelSize() const { return size; }
 
-    void generateFromTiles(const std::vector<Tile*>& tiles);
-    NodeAI* getNode(sf::Vector2i coords) const;
+    void GenerateFromTiles(const std::vector<Tile*>& tiles);
+    NodeAI* GetNode(sf::Vector2i coords) const;
 };

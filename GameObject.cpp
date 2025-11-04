@@ -24,7 +24,7 @@ GameObject::~GameObject()
 void GameObject::update(float dt) const
 {
     for (auto& comp : components) {
-        comp->update(dt);
+        comp->Update(dt);
     }
 }
 

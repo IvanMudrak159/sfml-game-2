@@ -134,6 +134,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AgentAI.cpp" />
     <ClCompile Include="AStar.cpp" />
     <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="CollisionLevel.cpp" />
@@ -160,6 +161,7 @@
     <ClCompile Include="Times.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AgentAI.h" />
     <ClInclude Include="AStar.h" />
     <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="CollisionLevel.h" />

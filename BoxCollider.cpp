@@ -18,9 +18,9 @@ BoxCollider::~BoxCollider()
 	owner->getGameWorld()->getPhysicsSystem().Unregister(this);
 }
 
-void BoxCollider::update(float dt)
+void BoxCollider::Update(float dt)
 {
-	Component::update(dt);
+	Component::Update(dt);
 }
 
 void BoxCollider::render(sf::RenderWindow& window)

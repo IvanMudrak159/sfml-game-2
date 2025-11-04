@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "AStar.h"
+#include "AgentAI.h"
 #include "DebugAIGridRenderer.h"
 #include "TileFactory.h"
 #include "Tilemap.h"
@@ -18,8 +18,8 @@ Level::Level(GameWorld& gameWorld)
 		1, 1, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3,
 		0, 1, 0, 0, 2, 0, 3, 3, 3, 0, 1, 1, 1, 0, 0, 0,
 		0, 1, 1, 0, 2, 3, 3, 0, 0, 0, 1, 1, 1, 2, 0, 0,
-		0, 0, 1, 0, 2, 0, 2, 2, 0, 0, 1, 1, 1, 1, 2, 0,
-		2, 0, 1, 0, 0, 0, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1,
+		0, 0, 1, 0, 2, 3, 2, 2, 0, 0, 1, 1, 1, 1, 2, 0,
+		2, 0, 1, 0, 3, 3, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1,
 		0, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 1,
 	};
 
@@ -46,10 +46,16 @@ Level::Level(GameWorld& gameWorld)
 	}
 
 	mapAI = std::make_unique<MapAI>(levelSize, tileSize);
-	mapAI->generateFromTiles(tiles);
+	mapAI->GenerateFromTiles(tiles);
 
 	GameObject* debugGO = gameWorld.createGameObject("AIDebug");
 	debugGO->addComponent<DebugAIGridRenderer>(mapAI.get());
+
+	//GameObject* enemyGO = gameWorld.createGameObject("enemy");
+	//enemyGO->setPosition(sf::Vector2f(96, 64));
+	//enemyGO->addComponent<SpriteRenderer>("Sprites/enemy128.png", sf::Vector2i(32, 32), 2);
+	//enemyGO->addComponent<AgentAI>(*mapAI);
+
 }
 
 Tile* Level::GetTile(int x, int y) const
@@ -60,27 +66,3 @@ Tile* Level::GetTile(int x, int y) const
 	}
 	return tiles[x + y * levelSize.x];
 }
-
-void Level::GoToTile(sf::Vector2i startTile, sf::Vector2i goalTile) const
-{
-	mapAI->ClearPath();
-
-	NodeAI* startNode = mapAI->getNode(startTile);
-	NodeAI* goalNode = mapAI->getNode(goalTile);
-
-
-	AStar astar;
-	auto path = astar.findPath(startNode, goalNode);
-
-	for (NodeAI* node : path)
-	{
-		node->isInPath = true;
-	}
-}
-
-void Level::ClearPath() const
-{
-	mapAI->ClearPath();
-}
-
-

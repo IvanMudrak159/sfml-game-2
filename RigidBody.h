@@ -23,6 +23,6 @@ public:
     ~RigidBody();
     void applyForce(const sf::Vector2f& force);
     void setConstForce(const sf::Vector2f& force);
-    void update(float dt) override;
+    void Update(float dt) override;
     
 };

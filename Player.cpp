@@ -1,7 +1,10 @@
 #include "Player.h"
 
 #include <iostream>
+
+#include "AgentAI.h"
 #include "BoxCollider.h"
+#include "Level.h"
 #include "PlayerController.h"
 #include "RigidBody.h"
 #include "SpriteRenderer.h"
@@ -9,14 +12,12 @@
 Player::Player(std::string name, GameWorld& gameWorld, Level* level)
 	: GameObject(name, gameWorld)
 {
-
-    sf::Texture playerTexture;
-    if (!playerTexture.loadFromFile("Sprites/player.png"))
-    {
-        std::cerr << "Error loading texture: " << "PLAYER TEXTURE" << std::endl;
-    }
-
-    addComponent<SpriteRenderer>(playerTexture, 1);
+    addComponent<SpriteRenderer>("Sprites/player.png", sf::Vector2i(32, 32), 1);
     addComponent<BoxCollider>(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(32, 32));
-    addComponent<PlayerController>(level);
+
+    addComponent<AgentAI>( *level->GetMapAI());
+
+
+    RigidBody* rb = addComponent<RigidBody>();
+    addComponent<PlayerController>(*rb, level);
 }

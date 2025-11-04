@@ -129,6 +129,9 @@
     <ClCompile Include="AStar.cpp">
       <Filter>Source Files\AI</Filter>
     </ClCompile>
+    <ClCompile Include="AgentAI.cpp">
+      <Filter>Source Files\AI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoxCollider.h">
@@ -204,6 +207,9 @@
       <Filter>Header Files\AI</Filter>
     </ClInclude>
     <ClInclude Include="DebugAIGridRenderer.h">
+      <Filter>Header Files\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="AgentAI.h">
       <Filter>Header Files\AI</Filter>
     </ClInclude>
   </ItemGroup>

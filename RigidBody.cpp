@@ -29,9 +29,9 @@ void RigidBody::setConstForce(const sf::Vector2f& force)
 }
 
 
-void RigidBody::update(float dt)
+void RigidBody::Update(float dt)
 {
-	Component::update(dt);
+	Component::Update(dt);
 
 	if (type == RigidbodyType::Dynamic && owner)
 	{

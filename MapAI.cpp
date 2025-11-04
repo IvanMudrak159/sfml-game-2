@@ -31,7 +31,7 @@ void MapAI::ClearPath() const
     }
 }
 
-void MapAI::generateFromTiles(const std::vector<Tile*>& tiles)
+void MapAI::GenerateFromTiles(const std::vector<Tile*>& tiles)
 {
     float tileHalfSize = tileSize.x * 0.5f;
 
@@ -81,7 +81,7 @@ void MapAI::generateFromTiles(const std::vector<Tile*>& tiles)
 }
 
 
-NodeAI* MapAI::getNode(sf::Vector2i coords) const
+NodeAI* MapAI::GetNode(sf::Vector2i coords) const
 {
 	if (coords.x < 0 || coords.y < 0 || coords.x >= size.x || coords.y >= size.y)
 	{
