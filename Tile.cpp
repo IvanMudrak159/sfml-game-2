@@ -1,5 +1,6 @@
 #include "Tile.h"
 
+#include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/Texture.hpp>
 
 #include "DebugHighlighter.h"

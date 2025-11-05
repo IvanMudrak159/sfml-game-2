@@ -1,5 +1,7 @@
 #include "DebugHighlighter.h"
 
+#include <SFML/Graphics/RenderTarget.hpp>
+
 #include "GameObject.h"
 
 DebugHighlighter::DebugHighlighter(GameObject* owner, sf::Vector2f position, sf::Vector2f size, sf::Color color) : Component(owner),

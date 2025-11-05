@@ -14,7 +14,8 @@ void Game::initWindow()
 
 void Game::initPlayer()
 {
-	gameWorld->createObject<Player>("Player", *gameWorld, level.get());
+	GameObject* player = gameWorld->createObject<Player>("Player", *gameWorld, level.get());
+	player->setPosition(sf::Vector2f(16, 16));
 }
 
 void Game::initLevel()

@@ -18,7 +18,7 @@ Tile* TileFactory::createTile(int type, int index, GameWorld& gameWorld, sf::Vec
 
 
     if (data.hasCollider) {
-        tile->addComponent<BoxCollider>(pos, sf::Vector2f(size));
+        tile->addComponent<BoxCollider>(pos + sf::Vector2f(size.x * 0.5f, size.y * 0.5f), sf::Vector2f(size));
     }
 
     return tile;

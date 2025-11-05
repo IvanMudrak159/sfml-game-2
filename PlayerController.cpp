@@ -13,7 +13,7 @@ void PlayerController::Update(float dt)
 {
     Component::Update(dt);
 
-    //handleMovement();
+    handleMovement();
     handleMouseInput();
 }
 

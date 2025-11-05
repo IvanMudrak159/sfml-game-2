@@ -43,8 +43,8 @@ void AgentAI::SetDestination(const sf::Vector2f& targetPos)
 
 
             //TODO: fix later pivot and stuff 
-            pathPositions.push_back(topLeft);
-            //pathPositions.push_back(node->getPosition());
+            //pathPositions.push_back(topLeft);
+            pathPositions.push_back(node->getPosition());
         }
     }
 }
@@ -75,7 +75,7 @@ void AgentAI::Update(float dt)
     sf::Vector2f targetPos = pathPositions[currentTargetIndex];
 
     sf::Vector2f direction = targetPos - currentPos;
-    float distance = std::sqrt(direction.x * direction.x + direction.y * direction.y);
+    float distance = sqrt(direction.x * direction.x + direction.y * direction.y);
 
     if (distance < 1.0f)
     {
@@ -87,7 +87,7 @@ void AgentAI::Update(float dt)
         }
         targetPos = pathPositions[currentTargetIndex];
         direction = targetPos - currentPos;
-        distance = std::sqrt(direction.x * direction.x + direction.y * direction.y);
+        distance = sqrt(direction.x * direction.x + direction.y * direction.y);
     }
 
     sf::Vector2f velocity = (direction / distance) * moveSpeed;

@@ -1,5 +1,7 @@
 #include "Plane.h"
 
+#include <SFML/Graphics/RenderTarget.hpp>
+
 #include "BoxCollider.h"
 #include "GameWorld.h"
 
