@@ -35,15 +35,6 @@ void AgentAI::SetDestination(const sf::Vector2f& targetPos)
         for (NodeAI* node : path)
         {
             node->isInPath = true;
-
-            sf::Vector2f topLeft(
-                node->getPosition().x - mapAI.GetTileSize().x * 0.5f,
-                node->getPosition().y - mapAI.GetTileSize().y * 0.5f
-            );
-
-
-            //TODO: fix later pivot and stuff 
-            //pathPositions.push_back(topLeft);
             pathPositions.push_back(node->getPosition());
         }
     }
