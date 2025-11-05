@@ -45,15 +45,27 @@ void PhysicsSystem::resolveCollision(BoxCollider* a, BoxCollider* b)
             mtv = sf::Vector2f(0.f, inter.size.y); 
     }
 
-    if (ra && ra->type == RigidbodyType::Dynamic && (!rb || rb->type != RigidbodyType::Dynamic))
+    if (ra && rb)
     {
-        a->owner->move(mtv);
-        ra->velocity = { 0.f, 0.f };
-    }
-    else if (rb && rb->type == RigidbodyType::Dynamic && (!ra || ra->type != RigidbodyType::Dynamic))
-    {
-        b->owner->move(-mtv);
-        rb->velocity = { 0.f, 0.f };
+        if (ra->type == RigidbodyType::Dynamic && rb->type == RigidbodyType::Dynamic)
+        {
+            float totalMass = ra->mass + rb->mass;
+            a->owner->move(mtv * (rb->mass / totalMass));
+            b->owner->move(-mtv * (ra->mass / totalMass));
+
+            ra->velocity = { 0.f, 0.f };
+            rb->velocity = { 0.f, 0.f };
+        }
+        else if (ra->type == RigidbodyType::Dynamic)
+        {
+            a->owner->move(mtv);
+            ra->velocity = { 0.f, 0.f };
+        }
+        else if (rb->type == RigidbodyType::Dynamic)
+        {
+            b->owner->move(-mtv);
+            rb->velocity = { 0.f, 0.f };
+        }
     }
 }
 
