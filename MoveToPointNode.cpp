@@ -15,7 +15,7 @@ void MoveToPointNode::OnStart()
     }
 }
 
-NodeState MoveToPointNode::OnTick(float dt)
+NodeState MoveToPointNode::OnTick(float dt, BlackBoard& bb)
 {
     if (!m_agent)
     {

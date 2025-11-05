@@ -8,8 +8,11 @@ public:
 
 protected:
     void OnStart() override;
-    NodeState OnTick(float dt) override;
+    NodeState OnTick(float dt, BlackBoard& bb) override;
     void OnEnd() override {}
+
+public:
+    void DrawDebug(sf::RenderTarget& target, sf::RenderStates states, BlackBoard& bb) override;
 
 private:
     float m_waitTime;

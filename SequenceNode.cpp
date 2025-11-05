@@ -8,11 +8,11 @@ SequenceNode::SequenceNode(std::vector<std::shared_ptr<NodeBT>> children): m_chi
 {
 }
 
-NodeState SequenceNode::Tick(float dt)
+NodeState SequenceNode::Tick(float dt, BlackBoard& bb)
 {
     while (m_currentIndex < m_children.size())
     {
-        NodeState result = m_children[m_currentIndex]->Tick(dt);
+        NodeState result = m_children[m_currentIndex]->Tick(dt, bb);
 
         if (result == NodeState::Running)
         {
@@ -35,4 +35,12 @@ NodeState SequenceNode::Tick(float dt)
 void SequenceNode::AddChild(std::shared_ptr<NodeBT> child)
 {
 	m_children.push_back(child);
+}
+
+void SequenceNode::DrawDebug(sf::RenderTarget& target, sf::RenderStates states, BlackBoard& bb)
+{
+	NodeBT::DrawDebug(target, states, bb);
+
+    if (m_currentIndex >= m_children.size()) return;
+    m_children[m_currentIndex]->DrawDebug(target, states, bb);
 }

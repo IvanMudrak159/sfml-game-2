@@ -6,7 +6,7 @@ class DebugAIGridRenderer : public Component, public Drawable
 {
 public:
     DebugAIGridRenderer(GameObject* owner, MapAI* map)
-        : Component(owner), Drawable(10000000), mapAI(map)
+        : Component(owner), Drawable(999), mapAI(map)
     {
     }
 
@@ -35,12 +35,14 @@ protected:
                 sf::Vector2f half(tileSize.x * 0.5f, tileSize.y * 0.5f);
                 rect.setPosition(node->getPosition() - half);
 
-                if (node->isInPath)
-                    rect.setFillColor(sf::Color(0, 0, 200, 100));
-                else if (node->isWalkable())
+                if (node->isWalkable())
+                {
                     rect.setFillColor(sf::Color(0, 200, 0, 100));
-                else 
+                }
+                else
+                {
                     rect.setFillColor(sf::Color(200, 0, 0, 100));
+                } 
 
                 target.draw(rect);
             }

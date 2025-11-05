@@ -17,8 +17,6 @@ private:
 public:
     NodeAI(const sf::Vector2f& pos, bool isWalkable);
 
-    bool isInPath = false;
-
     // --- Getters ---
     const sf::Vector2f& getPosition() const { return position; }
     bool isWalkable() const { return walkable; }

@@ -4,7 +4,6 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 
 #include "GameObject.h"
-#include "GameWorld.h"
 
 SpriteRenderer::SpriteRenderer(GameObject* owner, sf::Texture tex, int layer) : Component(owner), Drawable(layer)
 {
@@ -14,8 +13,6 @@ SpriteRenderer::SpriteRenderer(GameObject* owner, sf::Texture tex, int layer) : 
 	sprite->setOrigin(sf::Vector2f(texture->getSize().x * 0.5f, texture->getSize().y * 0.5f));
 	sprite->setPosition(sf::Vector2f(0.0f, 0.0f));
 	sprite->setTextureRect({{0, 0}, sf::Vector2i(texture->getSize())});
-
-	owner->getGameWorld()->getRenderSystem().RegisterGameObject(this);
 }
 
 SpriteRenderer::SpriteRenderer(GameObject* owner, std::string texPath, sf::Vector2i size, int layer): Component(owner), Drawable(layer)
@@ -37,13 +34,6 @@ SpriteRenderer::SpriteRenderer(GameObject* owner, std::string texPath, sf::Vecto
 		size.x / static_cast<float>(texSize.x),
 		size.y / static_cast<float>(texSize.y))
 	);
-
-	owner->getGameWorld()->getRenderSystem().RegisterGameObject(this);
-}
-
-SpriteRenderer::~SpriteRenderer()
-{
-	owner->getGameWorld()->getRenderSystem().UnregisterGameObject(this);
 }
 
 void SpriteRenderer::draw(sf::RenderTarget& target, sf::RenderStates states) const

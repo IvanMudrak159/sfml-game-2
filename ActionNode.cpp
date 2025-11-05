@@ -1,11 +1,11 @@
 #include "ActionNode.h"
 
 ActionNode::ActionNode()
-    : started(false)
+	: started(false)
 {
 }
 
-NodeState ActionNode::Tick(float dt)
+NodeState ActionNode::Tick(float dt, BlackBoard& bb)
 {
     if (!started)
     {
@@ -13,7 +13,7 @@ NodeState ActionNode::Tick(float dt)
         started = true;
     }
 
-    NodeState result = OnTick(dt);
+    NodeState result = OnTick(dt, bb);
 
     if (result != NodeState::Running)
     {

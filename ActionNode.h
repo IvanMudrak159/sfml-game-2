@@ -5,12 +5,11 @@ class ActionNode : public NodeBT
 {
 public:
     ActionNode();
-
-    NodeState Tick(float dt) override;
+    NodeState Tick(float dt, BlackBoard& bb) override;
 
 protected:
     virtual void OnStart() {}
-    virtual NodeState OnTick(float dt) = 0;
+    virtual NodeState OnTick(float dt, BlackBoard& bb) = 0;
     virtual void OnEnd() {}
 
 private:

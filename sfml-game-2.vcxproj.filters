@@ -156,6 +156,9 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Source Files\Scripts</Filter>
     </ClCompile>
+    <ClCompile Include="DebugAIAgentRenderer.cpp">
+      <Filter>Source Files\AI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoxCollider.h">
@@ -256,6 +259,12 @@
     </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>Header Files\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugAIAgentRenderer.h">
+      <Filter>Header Files\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackBoard.h">
+      <Filter>Header Files\AI\BT</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

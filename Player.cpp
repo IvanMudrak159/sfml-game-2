@@ -13,7 +13,7 @@ Player::Player(std::string name, GameWorld& gameWorld, Level* level)
     addComponent<SpriteRenderer>("Sprites/player.png", sf::Vector2i(32, 32), 5);
     addComponent<BoxCollider>(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(32, 32));
 
-    addComponent<AgentAI>( *level->GetMapAI(), true);
+    addComponent<AgentAI>( *level->GetMapAI());
 
 
     RigidBody* rb = addComponent<RigidBody>();

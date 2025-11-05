@@ -17,7 +17,7 @@ MapAI::~MapAI()
     }
 }
 
-void MapAI::ClearPath(bool clearPaint) const
+void MapAI::ClearPath() const
 {
     for (auto& row : grid)
     {
@@ -26,10 +26,6 @@ void MapAI::ClearPath(bool clearPaint) const
             node->setParent(nullptr);
             node->setG(std::numeric_limits<float>::max());
             node->setH(0);
-            if (clearPaint)
-            {
-				node->isInPath = false;
-            }
         }
     }
 }

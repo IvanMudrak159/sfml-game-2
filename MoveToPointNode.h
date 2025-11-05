@@ -11,7 +11,7 @@ public:
 
 protected:
     void OnStart() override;
-    NodeState OnTick(float dt) override;
+    NodeState OnTick(float dt, BlackBoard& bb) override;
     void OnEnd() override;
 
 private:

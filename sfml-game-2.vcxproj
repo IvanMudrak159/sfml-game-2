@@ -141,6 +141,7 @@
     <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="CollisionLevel.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="DebugAIAgentRenderer.cpp" />
     <ClCompile Include="DebugHighlighter.cpp" />
     <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -174,10 +175,12 @@
     <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="CollisionLevel.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="DebugAIAgentRenderer.h" />
     <ClInclude Include="DebugAIGridRenderer.h" />
     <ClInclude Include="DebugHighlighter.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="BlackBoard.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameWorld.h" />
