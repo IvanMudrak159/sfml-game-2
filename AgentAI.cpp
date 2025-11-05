@@ -9,6 +9,8 @@ AgentAI::AgentAI(GameObject* owner, MapAI& map): Component(owner), mapAI(map)
 
 void AgentAI::SetDestination(const sf::Vector2f& targetPos)
 {
+    ClearPath();
+
     sf::Vector2f playerPos = owner->getPosition();
     auto getTileFromPosition = [&](sf::Vector2f pos) -> sf::Vector2i {
         return sf::Vector2i(
