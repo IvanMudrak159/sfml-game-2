@@ -5,7 +5,7 @@
 #include "BoxCollider.h"
 #include "GameWorld.h"
 
-Plane::Plane(std::string name, GameWorld& gameWorld) : GameObject(name, gameWorld)
+Plane::Plane(std::string name, GameWorld& gameWorld) : GameObject(name, gameWorld), Drawable(0)
 {
 	vertices = sf::VertexArray (sf::PrimitiveType::Triangles, 6);
 
@@ -41,8 +41,6 @@ Plane::~Plane()
 
 void Plane::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	GameObject::draw(target, states);
-
 	states.transform = getTransform();
 	target.draw(vertices, states);
 }

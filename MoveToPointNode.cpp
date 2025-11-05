@@ -1,0 +1,42 @@
+#include "MoveToPointNode.h"
+#include "AgentAI.h"
+
+MoveToPointNode::MoveToPointNode(AgentAI* agent, const sf::Vector2f& target)
+    : m_agent(agent), m_target(target)
+{
+}
+
+void MoveToPointNode::OnStart()
+{
+    if (m_agent)
+    {
+        m_agent->SetDestination(m_target);
+        m_started = true;
+    }
+}
+
+NodeState MoveToPointNode::OnTick(float dt)
+{
+    if (!m_agent)
+    {
+        return NodeState::Failure;
+    }
+
+    if (!m_started)
+    {
+        OnStart();
+    }
+
+    if (m_agent->HasPath())
+        return NodeState::Running;
+
+    return NodeState::Success;
+}
+
+void MoveToPointNode::OnEnd()
+{
+    if (m_agent)
+    {
+        m_agent->ClearPath();
+    }
+}

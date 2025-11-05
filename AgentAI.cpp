@@ -3,8 +3,9 @@
 #include "AStar.h"
 #include "RigidBody.h"
 
-AgentAI::AgentAI(GameObject* owner, MapAI& map): Component(owner), mapAI(map)
+AgentAI::AgentAI(GameObject* owner, MapAI& map, bool canPaintMap): Component(owner), mapAI(map)
 {
+	m_canPaintMap = canPaintMap;
 }
 
 void AgentAI::SetDestination(const sf::Vector2f& targetPos)
@@ -25,7 +26,7 @@ void AgentAI::SetDestination(const sf::Vector2f& targetPos)
     if (mouseTile.x >= 0 && mouseTile.x < mapAI.GetLevelSize().x &&
         mouseTile.y >= 0 && mouseTile.y < mapAI.GetLevelSize().y)
     {
-        mapAI.ClearPath();
+        mapAI.ClearPath(m_canPaintMap);
 
         NodeAI* startNode = mapAI.GetNode(playerTile);
         NodeAI* goalNode = mapAI.GetNode(mouseTile);
@@ -36,7 +37,10 @@ void AgentAI::SetDestination(const sf::Vector2f& targetPos)
 
         for (NodeAI* node : path)
         {
-            node->isInPath = true;
+            if (m_canPaintMap)
+            {
+				node->isInPath = true;
+            }
             pathPositions.push_back(node->getPosition());
         }
     }
@@ -44,7 +48,7 @@ void AgentAI::SetDestination(const sf::Vector2f& targetPos)
 
 void AgentAI::ClearPath()
 {
-	mapAI.ClearPath();
+	mapAI.ClearPath(m_canPaintMap);
 	pathPositions.clear();
     currentTargetIndex = 0;
 
@@ -90,4 +94,9 @@ void AgentAI::Update(float dt)
     {
         rb->setConstForce(velocity);
     }
+}
+
+bool AgentAI::HasPath() const
+{
+    return !pathPositions.empty() && currentTargetIndex < pathPositions.size();
 }

@@ -1,8 +1,5 @@
 #pragma once
 #include "Component.h"
-#include "GameObject.h"
-
-class GameWorld;
 
 enum class RigidbodyType
 {
@@ -20,7 +17,7 @@ public:
     float mass;
 
     RigidBody(GameObject* owner, RigidbodyType t = RigidbodyType::Dynamic, float m = 1.f);
-    ~RigidBody();
+    ~RigidBody() override;
     void applyForce(const sf::Vector2f& force);
     void setConstForce(const sf::Vector2f& force);
     void Update(float dt) override;

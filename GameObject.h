@@ -2,16 +2,16 @@
 #include <memory>
 #include <string>
 #include <vector>
-#include <SFML/Graphics/Drawable.hpp>
 #include <SFML/Graphics/Transformable.hpp>
 
-#include "Drawable.h"
 #include "Component.h"
+#include "Drawable.h"
 
+class Component;
 class GameWorld;
 
 
-class GameObject : public sf::Transformable, public Drawable
+class GameObject : public sf::Transformable
 {
 public:
     GameObject(std::string name, GameWorld& gameWorld);
@@ -84,5 +84,4 @@ public:
 
 protected:
     GameWorld& gameWorld;
-    void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };

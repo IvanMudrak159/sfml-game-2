@@ -4,7 +4,7 @@
 #include "GameObject.h"
 
 
-class Plane : public GameObject
+class Plane : public GameObject, public Drawable
 {
 private:
 	sf::VertexArray vertices;

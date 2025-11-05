@@ -3,7 +3,7 @@
 #include "GameObject.h"
 
 
-class Tile: public GameObject
+class Tile : public GameObject, public Drawable
 {
 public:
 	Tile(std::string name, GameWorld&, int number = 0, sf::Vector2u size = { 32, 32 }, sf::Vector2f pos = { 0,0 });
@@ -16,6 +16,7 @@ public:
 	void buildVertices(sf::Vertex* vertices) const;
 	void setTileset(const sf::Texture* tileset);
 	void setHighlight();
+
 protected:
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 

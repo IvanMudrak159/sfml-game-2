@@ -4,6 +4,7 @@
 
 #include "AgentAI.h"
 #include "DebugAIGridRenderer.h"
+#include "Enemy.h"
 #include "TileFactory.h"
 #include "Tilemap.h"
 
@@ -51,11 +52,7 @@ Level::Level(GameWorld& gameWorld)
 	GameObject* debugGO = gameWorld.createGameObject("AIDebug");
 	debugGO->addComponent<DebugAIGridRenderer>(mapAI.get());
 
-	//GameObject* enemyGO = gameWorld.createGameObject("enemy");
-	//enemyGO->setPosition(sf::Vector2f(96, 64));
-	//enemyGO->addComponent<SpriteRenderer>("Sprites/enemy128.png", sf::Vector2i(32, 32), 2);
-	//enemyGO->addComponent<AgentAI>(*mapAI);
-
+	gameWorld.createObject<Enemy>("Enemy", gameWorld, this);
 }
 
 Tile* Level::GetTile(int x, int y) const

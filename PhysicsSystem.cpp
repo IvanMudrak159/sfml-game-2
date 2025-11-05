@@ -1,10 +1,9 @@
 #include "PhysicsSystem.h"
-
-#include <iostream>
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/System/Vector2.hpp>
 
 #include "BoxCollider.h"
+#include "GameObject.h"
 #include "RigidBody.h"
 
 void PhysicsSystem::resolveCollision(BoxCollider* a, BoxCollider* b)

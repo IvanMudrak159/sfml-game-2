@@ -55,6 +55,12 @@
     <Filter Include="Source Files\AI">
       <UniqueIdentifier>{454b972d-fd72-4535-89f6-f9bf27856afe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\AI\BT">
+      <UniqueIdentifier>{752695b2-118d-4716-b028-9a6327ed63d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\AI\BT">
+      <UniqueIdentifier>{c7e5422f-dc48-43c7-847b-2af7c231a1ee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -131,6 +137,24 @@
     </ClCompile>
     <ClCompile Include="AgentAI.cpp">
       <Filter>Source Files\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="BehaviourTree.cpp">
+      <Filter>Source Files\AI\BT</Filter>
+    </ClCompile>
+    <ClCompile Include="SequenceNode.cpp">
+      <Filter>Source Files\AI\BT</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionNode.cpp">
+      <Filter>Source Files\AI\BT</Filter>
+    </ClCompile>
+    <ClCompile Include="WaitNode.cpp">
+      <Filter>Source Files\AI\BT</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveToPointNode.cpp">
+      <Filter>Source Files\AI\BT</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files\Scripts</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +235,27 @@
     </ClInclude>
     <ClInclude Include="AgentAI.h">
       <Filter>Header Files\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="NodeBT.h">
+      <Filter>Header Files\AI\BT</Filter>
+    </ClInclude>
+    <ClInclude Include="BehaviourTree.h">
+      <Filter>Header Files\AI\BT</Filter>
+    </ClInclude>
+    <ClInclude Include="SequenceNode.h">
+      <Filter>Header Files\AI\BT</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionNode.h">
+      <Filter>Header Files\AI\BT</Filter>
+    </ClInclude>
+    <ClInclude Include="WaitNode.h">
+      <Filter>Header Files\AI\BT</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveToPointNode.h">
+      <Filter>Header Files\AI\BT</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Header Files\Scripts</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

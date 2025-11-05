@@ -7,12 +7,15 @@
 #include "GameWorld.h"
 
 
-Tile::Tile(std::string name, GameWorld& gameWorld, int number, sf::Vector2u size, sf::Vector2f pos) : GameObject(name, gameWorld), m_number(number), m_tileSize(size), m_position(pos)
+Tile::Tile(std::string name, GameWorld& gameWorld, int number, sf::Vector2u size, sf::Vector2f pos) :
+	GameObject(name, gameWorld), Drawable(1), m_number(number), m_tileSize(size), m_position(pos)
 {
+    gameWorld.getRenderSystem().RegisterGameObject(this);
 }
 
 Tile::~Tile()
 {
+    gameWorld.getRenderSystem().UnregisterGameObject(this);
 }
 
 int Tile::getNumber() const
@@ -77,15 +80,11 @@ void Tile::setHighlight()
 
 void Tile::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    GameObject::draw(target, states);
+	if (!m_tileset) return; 
 
-	if (!m_tileset) return; // No texture loaded yet
-
-    // Create vertex array for this tile
     sf::Vertex vertices[6];
     buildVertices(vertices);
 
-    // Apply the tileset texture
     states.texture = m_tileset;
 
     target.draw(vertices, 6, sf::PrimitiveType::Triangles, states);

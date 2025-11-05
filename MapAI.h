@@ -16,7 +16,7 @@ public:
     MapAI(sf::Vector2u size, sf::Vector2u tileSize);
     ~MapAI();
 
-    void ClearPath() const;
+    void ClearPath(bool clearPaint) const;
     sf::Vector2u GetTileSize() const { return tileSize; }
     sf::Vector2u GetLevelSize() const { return size; }
 

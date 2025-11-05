@@ -1,6 +1,6 @@
 #include "RigidBody.h"
 
-#include "GameWorld.h"
+#include "GameObject.h"
 
 RigidBody::RigidBody(GameObject* owner, RigidbodyType t, float m): Component(owner), type(t), mass(m)
 {
