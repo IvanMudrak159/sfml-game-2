@@ -36,6 +36,9 @@ public:
 	PhysicsSystem& getPhysicsSystem();
 	RenderSystem& getRenderSystem();
 
+	std::vector<GameObject*> GetObjectsInRadius(const sf::Vector2f& center, float radius) const;
+
+
 	void update(float dt);
 	void render();
 	sf::Vector2i getMousePixelPosition() const;

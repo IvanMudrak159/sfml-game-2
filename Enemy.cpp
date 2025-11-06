@@ -4,10 +4,13 @@
 #include "BehaviourTree.h"
 #include "Level.h"
 #include "MoveToPointNode.h"
+#include "ParallelNode.h"
 #include "SpriteRenderer.h"
 #include "RigidBody.h"
+#include "SearchInRadiusNode.h"
 #include "SequenceNode.h"
 #include "WaitNode.h"
+#include "Player.h"
 
 Enemy::Enemy(std::string name, GameWorld& gameWorld, Level* level): GameObject(name, gameWorld)
 {
@@ -26,7 +29,9 @@ Enemy::Enemy(std::string name, GameWorld& gameWorld, Level* level): GameObject(n
 	auto moveToTarget = std::make_shared<MoveToPointNode>(agentAi, targetPos);
 	auto wait2 = std::make_shared<WaitNode>(1.f);
 	auto moveBack = std::make_shared<MoveToPointNode>(agentAi, startPos);
+	auto searchInRadius = std::make_shared<SearchInRadiusNode<Player>>(64);
 
+	auto parallel = std::make_shared<ParallelNode>(ParallelPolicy::RequireOneSuccess);
 	auto sequence = std::make_shared<SequenceNode>();
 
 	sequence->AddChild(wait);
@@ -34,5 +39,8 @@ Enemy::Enemy(std::string name, GameWorld& gameWorld, Level* level): GameObject(n
 	sequence->AddChild(wait2);
 	sequence->AddChild(moveBack);
 
-	BehaviourTree* tree = addComponent<BehaviourTree>(sequence);
+	parallel->AddChild(searchInRadius);
+	parallel->AddChild(sequence);
+
+	BehaviourTree* tree = addComponent<BehaviourTree>(parallel);
 }

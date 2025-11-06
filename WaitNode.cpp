@@ -37,7 +37,7 @@ void WaitNode::DrawDebug(sf::RenderTarget& target, sf::RenderStates states, Blac
 
     if (owner == nullptr) return;
 
-    sf::Vector2f size(80.f, 20.f);
+    sf::Vector2f size(40, 10.f);
     sf::Vector2f centerPos = owner->getPosition() - size * 0.5f;
 
 
@@ -51,10 +51,9 @@ void WaitNode::DrawDebug(sf::RenderTarget& target, sf::RenderStates states, Blac
     {
         std::cerr << "Failed to load font\n";
     }
-    font.setSmooth(true);
 
     sf::Text text(font);
-    text.setCharacterSize(16);
+    text.setCharacterSize(9);
     text.setFillColor(sf::Color::White);
 
     float remaining = std::max(0.f, m_waitTime - m_elapsed);

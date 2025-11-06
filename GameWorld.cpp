@@ -51,3 +51,19 @@ RenderSystem& GameWorld::getRenderSystem()
 {
 	return renderSystem;
 }
+
+std::vector<GameObject*> GameWorld::GetObjectsInRadius(const sf::Vector2f& center, float radius) const
+{
+	std::vector<GameObject*> result;
+	float r2 = radius * radius;
+
+	for (auto& obj : objects)
+	{
+		sf::Vector2f diff = obj->getPosition() - center;
+		float dist2 = diff.x * diff.x + diff.y * diff.y;
+
+		if (dist2 <= r2)
+			result.push_back(obj.get());
+	}
+	return result;
+}
