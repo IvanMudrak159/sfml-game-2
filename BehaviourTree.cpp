@@ -1,5 +1,7 @@
 #include "BehaviourTree.h"
 #include <SFML/Graphics/RenderStates.hpp>
+
+#include "Debug.h"
 #include "NodeBT.h"
 
 BehaviourTree::BehaviourTree(GameObject* owner, std::shared_ptr<NodeBT> root): Component(owner), Drawable(1001),
@@ -22,6 +24,7 @@ BlackBoard& BehaviourTree::GetBlackBoard()
 
 void BehaviourTree::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+	if (!Debug::isEnabled()) return;
 	if (m_root)
 	{
 		m_root->DrawDebug(target, states, const_cast<BlackBoard&>(m_blackboard));

@@ -1,12 +1,16 @@
 #include "AgentAI.h"
 
 #include "AStar.h"
+#include "Debug.h"
 #include "DebugAIAgentRenderer.h"
 #include "RigidBody.h"
 
 AgentAI::AgentAI(GameObject* owner, MapAI& map): Component(owner), mapAI(map)
 {
-    owner->addComponent<DebugAIAgentRenderer>(this, map.GetLevelSize(), map.GetTileSize());
+    if (Debug::isEnabled())
+    {
+		owner->addComponent<DebugAIAgentRenderer>(this, map.GetLevelSize(), map.GetTileSize());
+    }
 }
 
 void AgentAI::SetDestination(const sf::Vector2f& targetPos)

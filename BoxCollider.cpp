@@ -1,5 +1,6 @@
 #include "BoxCollider.h"
 
+#include "Debug.h"
 #include "DebugHighlighter.h"
 #include "GameObject.h"
 #include "GameWorld.h"
@@ -16,7 +17,10 @@ BoxCollider::BoxCollider(GameObject* owner, sf::Vector2f position, sf::Vector2f 
 
 	owner->getGameWorld()->getPhysicsSystem().Register(this);
 
-	owner->addComponent<DebugHighlighter>(adjustedPos, size, sf::Color::Red);
+	if (Debug::isEnabled())
+	{
+		owner->addComponent<DebugHighlighter>(adjustedPos, size, sf::Color::Red);
+	}
 }
 
 BoxCollider::~BoxCollider()

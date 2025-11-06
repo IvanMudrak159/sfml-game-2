@@ -162,6 +162,9 @@
     <ClCompile Include="ParallelNode.cpp">
       <Filter>Source Files\AI\BT</Filter>
     </ClCompile>
+    <ClCompile Include="Debug.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoxCollider.h">
@@ -274,6 +277,9 @@
     </ClInclude>
     <ClInclude Include="SearchInRadiusNode.h">
       <Filter>Header Files\AI\BT</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug.h">
+      <Filter>Header Files\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

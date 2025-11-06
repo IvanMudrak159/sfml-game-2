@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "AgentAI.h"
+#include "Debug.h"
 #include "DebugAIGridRenderer.h"
 #include "Enemy.h"
 #include "TileFactory.h"
@@ -49,8 +50,12 @@ Level::Level(GameWorld& gameWorld)
 	mapAI = std::make_unique<MapAI>(levelSize, tileSize);
 	mapAI->GenerateFromTiles(tiles);
 
-	GameObject* debugGO = gameWorld.createGameObject("AIDebug");
-	debugGO->addComponent<DebugAIGridRenderer>(mapAI.get());
+	if (Debug::isEnabled()) 
+	{
+		GameObject* debugGO = gameWorld.createGameObject("AIDebug");
+		debugGO->addComponent<DebugAIGridRenderer>(mapAI.get());
+	}
+
 
 	gameWorld.createObject<Enemy>("Enemy", gameWorld, this);
 }
