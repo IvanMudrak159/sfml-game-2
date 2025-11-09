@@ -18,6 +18,9 @@ public:
     ~GameObject() override;
     void update(float dt) const;
 
+    void Destroy() { m_destroyed = true; }
+    bool IsDestroyed() const { return m_destroyed; }
+
     std::vector<std::unique_ptr<Component>> components;
     std::string name;
 
@@ -84,4 +87,5 @@ public:
 
 protected:
     GameWorld& gameWorld;
+    bool m_destroyed = false;
 };

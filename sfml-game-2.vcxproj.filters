@@ -165,6 +165,12 @@
     <ClCompile Include="Debug.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
+    <ClCompile Include="SelectorNode.cpp">
+      <Filter>Source Files\AI\BT</Filter>
+    </ClCompile>
+    <ClCompile Include="ConditionNode.cpp">
+      <Filter>Source Files\AI\BT</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoxCollider.h">
@@ -280,6 +286,15 @@
     </ClInclude>
     <ClInclude Include="Debug.h">
       <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectorNode.h">
+      <Filter>Header Files\AI\BT</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptNode.h">
+      <Filter>Header Files\AI\BT</Filter>
+    </ClInclude>
+    <ClInclude Include="ConditionNode.h">
+      <Filter>Header Files\AI\BT</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -141,6 +141,7 @@
     <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="CollisionLevel.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="ConditionNode.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="DebugAIAgentRenderer.cpp" />
     <ClCompile Include="DebugHighlighter.cpp" />
@@ -160,6 +161,7 @@
     <ClCompile Include="PlayerController.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="RigidBody.cpp" />
+    <ClCompile Include="SelectorNode.cpp" />
     <ClCompile Include="SequenceNode.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="SpriteRenderer.cpp" />
@@ -177,6 +179,7 @@
     <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="CollisionLevel.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="ConditionNode.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="DebugAIAgentRenderer.h" />
     <ClInclude Include="DebugAIGridRenderer.h" />
@@ -199,7 +202,9 @@
     <ClInclude Include="PlayerController.h" />
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="RigidBody.h" />
+    <ClInclude Include="ScriptNode.h" />
     <ClInclude Include="SearchInRadiusNode.h" />
+    <ClInclude Include="SelectorNode.h" />
     <ClInclude Include="SequenceNode.h" />
     <ClInclude Include="SpriteRenderer.h" />
     <ClInclude Include="Tile.h" />

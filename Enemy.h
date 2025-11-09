@@ -7,5 +7,5 @@ class Level;
 class Enemy : public GameObject
 {
 public:
-	Enemy(std::string name, GameWorld& gameWorld, Level* level);
+	Enemy(const std::string& name, GameWorld& gameWorld, const Level* level);
 };

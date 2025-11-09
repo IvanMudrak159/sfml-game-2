@@ -2,6 +2,7 @@
 
 #include "AgentAI.h"
 #include "BehaviourTree.h"
+#include "ConditionNode.h"
 #include "Level.h"
 #include "MoveToPointNode.h"
 #include "ParallelNode.h"
@@ -11,8 +12,10 @@
 #include "SequenceNode.h"
 #include "WaitNode.h"
 #include "Player.h"
+#include "ScriptNode.h"
+#include "SelectorNode.h"
 
-Enemy::Enemy(std::string name, GameWorld& gameWorld, Level* level): GameObject(name, gameWorld)
+Enemy::Enemy(const std::string& name, GameWorld& gameWorld, const Level* level): GameObject(name, gameWorld)
 {
 	this->setPosition(sf::Vector2f(96, 64));
 
@@ -25,22 +28,78 @@ Enemy::Enemy(std::string name, GameWorld& gameWorld, Level* level): GameObject(n
 	sf::Vector2f startPos = this->getPosition();
 	sf::Vector2f targetPos = sf::Vector2f(100.f, 50.f);
 
-	auto wait = std::make_shared<WaitNode>(1.f);
+	// Patrol Sequence
 	auto moveToTarget = std::make_shared<MoveToPointNode>(agentAi, targetPos);
-	auto wait2 = std::make_shared<WaitNode>(1.f);
 	auto moveBack = std::make_shared<MoveToPointNode>(agentAi, startPos);
-	auto searchInRadius = std::make_shared<SearchInRadiusNode<Player>>(64);
 
-	auto parallel = std::make_shared<ParallelNode>(ParallelPolicy::RequireOneSuccess);
-	auto sequence = std::make_shared<SequenceNode>();
+	auto patrolSequence = std::make_shared<SequenceNode>();
 
-	sequence->AddChild(wait);
-	sequence->AddChild(moveToTarget);
-	sequence->AddChild(wait2);
-	sequence->AddChild(moveBack);
+	patrolSequence->AddChild(std::make_shared<WaitNode>(1.f));
+	patrolSequence->AddChild(moveToTarget);
+	patrolSequence->AddChild(std::make_shared<WaitNode>(1.f));
+	patrolSequence->AddChild(moveBack);
 
-	parallel->AddChild(searchInRadius);
-	parallel->AddChild(sequence);
+	// ------
 
-	BehaviourTree* tree = addComponent<BehaviourTree>(parallel);
+	// Search Lambdas
+	auto searchPlayerLambda = [&gameWorld, this](BlackBoard& bb) -> bool
+		{
+			int radius = 64;
+			auto objects = gameWorld.GetObjectsInRadius(this->getPosition(), radius);
+
+			for (auto* obj : objects)
+			{
+				if (dynamic_cast<Player*>(obj))
+				{
+					bb.Set("target", obj);
+					return true;
+				}
+			}
+
+			return false;
+		};
+	auto searchDebug = [&gameWorld, this](sf::RenderTarget& target, const sf::RenderStates& states, BlackBoard&) -> void
+		{
+			int radius = 64;
+
+			sf::Vector2f pos = this->getPosition();
+
+			sf::CircleShape shape(radius);
+			shape.setOrigin(sf::Vector2f(radius, radius));
+			shape.setPosition(pos);
+
+			shape.setFillColor(sf::Color(255, 0, 0, 50));
+
+			target.draw(shape, states);
+		};
+
+	// ------
+
+	// DestroyScheduledObjects Sequence
+
+	auto destroyNode = std::make_shared<ScriptNode>(
+		[this](float dt, BlackBoard& bb) -> NodeState {
+		Destroy();
+		return NodeState::Success;
+		}
+	);
+
+	auto destroySequence = std::make_shared<SequenceNode>();
+
+	destroySequence->AddChild(std::make_shared<WaitNode>(3.f));
+	destroySequence->AddChild(destroyNode);
+
+	// ------
+
+
+	// Selector Node
+	auto selector = std::make_shared<SelectorNode>();
+	auto SearchForPlayerNode = std::make_shared<ConditionNode>(searchPlayerLambda, destroySequence, searchDebug);
+	auto PatrolConditionNode = std::make_shared<ConditionNode>([](BlackBoard& bb) { return true; }, patrolSequence);
+	// --------------
+
+	selector->AddChild(SearchForPlayerNode);
+	selector->AddChild(PatrolConditionNode);
+
+	BehaviourTree* tree = addComponent<BehaviourTree>(selector);
 }

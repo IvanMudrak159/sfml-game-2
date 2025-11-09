@@ -20,6 +20,7 @@ private:
 	PhysicsSystem physicsSystem;
 	RenderSystem renderSystem;
 	std::vector<std::unique_ptr<GameObject>> objects;
+	void DestroyScheduledObjects();
 
 public:
 	template<typename T, typename... Args>
@@ -43,5 +44,4 @@ public:
 	void render();
 	sf::Vector2i getMousePixelPosition() const;
 	sf::Vector2f getMouseWorldPosition() const;
-
 };

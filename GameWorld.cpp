@@ -24,11 +24,21 @@ void GameWorld::update(float dt)
 
 	physicsSystem.update(dt);
 
+	DestroyScheduledObjects();
 }
 
 void GameWorld::render()
 {
 	renderSystem.update();
+}
+
+void GameWorld::DestroyScheduledObjects()
+{
+	objects.erase(
+		std::remove_if(objects.begin(), objects.end(),
+			[](const std::unique_ptr<GameObject>& o) { return o->IsDestroyed(); }),
+		objects.end()
+	);
 }
 
 sf::Vector2i GameWorld::getMousePixelPosition() const
