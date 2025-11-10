@@ -1,4 +1,6 @@
-#include "Game.h"
+#include <memory>
+
+#include "Core/Game.h"
 
 int main()
 {

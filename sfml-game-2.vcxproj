@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\External\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\External\SFML\include;$(SolutionDir)\sfml-game-2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -122,7 +122,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\External\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\sfml-game-2\include;$(SolutionDir)\External\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -134,84 +134,106 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ActionNode.cpp" />
-    <ClCompile Include="AgentAI.cpp" />
-    <ClCompile Include="AStar.cpp" />
-    <ClCompile Include="BehaviourTree.cpp" />
-    <ClCompile Include="BoxCollider.cpp" />
-    <ClCompile Include="CollisionLevel.cpp" />
-    <ClCompile Include="Component.cpp" />
-    <ClCompile Include="ConditionNode.cpp" />
-    <ClCompile Include="Debug.cpp" />
-    <ClCompile Include="DebugAIAgentRenderer.cpp" />
-    <ClCompile Include="DebugHighlighter.cpp" />
-    <ClCompile Include="Drawable.cpp" />
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="GameWorld.cpp" />
-    <ClCompile Include="Level.cpp" />
-    <ClCompile Include="MapAI.cpp" />
-    <ClCompile Include="MoveToPointNode.cpp" />
-    <ClCompile Include="NodeAI.cpp" />
-    <ClCompile Include="ParallelNode.cpp" />
-    <ClCompile Include="PhysicsSystem.cpp" />
-    <ClCompile Include="Plane.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PlayerController.cpp" />
-    <ClCompile Include="RenderSystem.cpp" />
-    <ClCompile Include="RigidBody.cpp" />
-    <ClCompile Include="SelectorNode.cpp" />
-    <ClCompile Include="SequenceNode.cpp" />
     <ClCompile Include="Source.cpp" />
-    <ClCompile Include="SpriteRenderer.cpp" />
-    <ClCompile Include="Tile.cpp" />
-    <ClCompile Include="TileFactory.cpp" />
-    <ClCompile Include="Tilemap.cpp" />
-    <ClCompile Include="Times.cpp" />
-    <ClCompile Include="WaitNode.cpp" />
+    <ClCompile Include="src\AI\AgentAI.cpp" />
+    <ClCompile Include="src\AI\AStar.cpp" />
+    <ClCompile Include="src\AI\BT\ActionNode.cpp" />
+    <ClCompile Include="src\AI\BT\BehaviourTree.cpp" />
+    <ClCompile Include="src\AI\BT\ConditionNode.cpp" />
+    <ClCompile Include="src\AI\BT\MoveToPointNode.cpp" />
+    <ClCompile Include="src\AI\BT\ParallelNode.cpp" />
+    <ClCompile Include="src\AI\BT\SelectorNode.cpp" />
+    <ClCompile Include="src\AI\BT\SequenceNode.cpp" />
+    <ClCompile Include="src\AI\BT\WaitNode.cpp" />
+    <ClCompile Include="src\AI\DebugAIAgentRenderer.cpp" />
+    <ClCompile Include="src\AI\MapAI.cpp" />
+    <ClCompile Include="src\AI\NodeAI.cpp" />
+    <ClCompile Include="src\Components\BoxCollider.cpp" />
+    <ClCompile Include="src\Components\DebugHighlighter.cpp" />
+    <ClCompile Include="src\Components\RigidBody.cpp" />
+    <ClCompile Include="src\Components\SpriteRenderer.cpp" />
+    <ClCompile Include="src\Core\Debug.cpp" />
+    <ClCompile Include="src\Core\Drawable.cpp" />
+    <ClCompile Include="src\Core\Game.cpp" />
+    <ClCompile Include="src\Core\GameObject.cpp" />
+    <ClCompile Include="src\Core\GameWorld.cpp" />
+    <ClCompile Include="src\Core\Plane.cpp" />
+    <ClCompile Include="src\Core\Times.cpp" />
+    <ClCompile Include="src\Levels\CollisionLevel.cpp" />
+    <ClCompile Include="src\Levels\Level.cpp" />
+    <ClCompile Include="src\Scripts\Enemy.cpp" />
+    <ClCompile Include="src\Scripts\Player.cpp" />
+    <ClCompile Include="src\Scripts\PlayerController.cpp" />
+    <ClCompile Include="src\Systems\PhysicsSystem.cpp" />
+    <ClCompile Include="src\Systems\RenderSystem.cpp" />
+    <ClCompile Include="src\Tilemap\Tile.cpp" />
+    <ClCompile Include="src\Tilemap\TileFactory.cpp" />
+    <ClCompile Include="src\Tilemap\Tilemap.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ActionNode.h" />
-    <ClInclude Include="AgentAI.h" />
-    <ClInclude Include="AStar.h" />
-    <ClInclude Include="BehaviourTree.h" />
-    <ClInclude Include="BoxCollider.h" />
-    <ClInclude Include="CollisionLevel.h" />
-    <ClInclude Include="Component.h" />
-    <ClInclude Include="ConditionNode.h" />
-    <ClInclude Include="Debug.h" />
-    <ClInclude Include="DebugAIAgentRenderer.h" />
-    <ClInclude Include="DebugAIGridRenderer.h" />
-    <ClInclude Include="DebugHighlighter.h" />
-    <ClInclude Include="Drawable.h" />
-    <ClInclude Include="Enemy.h" />
-    <ClInclude Include="BlackBoard.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="GameObject.h" />
-    <ClInclude Include="GameWorld.h" />
-    <ClInclude Include="Level.h" />
-    <ClInclude Include="MapAI.h" />
-    <ClInclude Include="MoveToPointNode.h" />
-    <ClInclude Include="NodeAI.h" />
-    <ClInclude Include="NodeBT.h" />
-    <ClInclude Include="ParallelNode.h" />
-    <ClInclude Include="PhysicsSystem.h" />
-    <ClInclude Include="Plane.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="PlayerController.h" />
-    <ClInclude Include="RenderSystem.h" />
-    <ClInclude Include="RigidBody.h" />
-    <ClInclude Include="ScriptNode.h" />
-    <ClInclude Include="SelectorNode.h" />
-    <ClInclude Include="SequenceNode.h" />
-    <ClInclude Include="SpriteRenderer.h" />
-    <ClInclude Include="Tile.h" />
-    <ClInclude Include="TileData.h" />
-    <ClInclude Include="TileFactory.h" />
-    <ClInclude Include="Tilemap.h" />
-    <ClInclude Include="Times.h" />
-    <ClInclude Include="WaitNode.h" />
+    <ClInclude Include="include\AI\AgentAI.h" />
+    <ClInclude Include="include\AI\AStar.h" />
+    <ClInclude Include="include\AI\BT\ActionNode.h" />
+    <ClInclude Include="include\AI\BT\BehaviourTree.h" />
+    <ClInclude Include="include\AI\BT\BlackBoard.h" />
+    <ClInclude Include="include\AI\BT\ConditionNode.h" />
+    <ClInclude Include="include\AI\BT\MoveToPointNode.h" />
+    <ClInclude Include="include\AI\BT\NodeBT.h" />
+    <ClInclude Include="include\AI\BT\ParallelNode.h" />
+    <ClInclude Include="include\AI\BT\ScriptNode.h" />
+    <ClInclude Include="include\AI\BT\SelectorNode.h" />
+    <ClInclude Include="include\AI\BT\SequenceNode.h" />
+    <ClInclude Include="include\AI\BT\WaitNode.h" />
+    <ClInclude Include="include\AI\MapAI.h" />
+    <ClInclude Include="include\AI\NodeAI.h" />
+    <ClInclude Include="include\Components\BoxCollider.h" />
+    <ClInclude Include="include\Components\Component.h" />
+    <ClInclude Include="include\Components\DebugAIAgentRenderer.h" />
+    <ClInclude Include="include\Components\DebugAIGridRenderer.h" />
+    <ClInclude Include="include\Components\DebugHighlighter.h" />
+    <ClInclude Include="include\Components\RigidBody.h" />
+    <ClInclude Include="include\Components\SpriteRenderer.h" />
+    <ClInclude Include="include\Core\Debug.h" />
+    <ClInclude Include="include\Core\Drawable.h" />
+    <ClInclude Include="include\Core\Game.h" />
+    <ClInclude Include="include\Core\GameObject.h" />
+    <ClInclude Include="include\Core\GameWorld.h" />
+    <ClInclude Include="include\Core\Plane.h" />
+    <ClInclude Include="include\Core\Times.h" />
+    <ClInclude Include="include\Levels\CollisionLevel.h" />
+    <ClInclude Include="include\Levels\Level.h" />
+    <ClInclude Include="include\Scripts\Enemy.h" />
+    <ClInclude Include="include\Scripts\Player.h" />
+    <ClInclude Include="include\Scripts\PlayerController.h" />
+    <ClInclude Include="include\Systems\PhysicsSystem.h" />
+    <ClInclude Include="include\Systems\RenderSystem.h" />
+    <ClInclude Include="include\Tilemap\Tile.h" />
+    <ClInclude Include="include\Tilemap\TileData.h" />
+    <ClInclude Include="include\Tilemap\TileFactory.h" />
+    <ClInclude Include="include\Tilemap\Tilemap.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
+    <None Include="sfml-audio-3.dll" />
+    <None Include="sfml-audio-d-3.dll" />
+    <None Include="sfml-graphics-3.dll" />
+    <None Include="sfml-graphics-d-3.dll" />
+    <None Include="sfml-network-3.dll" />
+    <None Include="sfml-network-d-3.dll" />
+    <None Include="sfml-system-3.dll" />
+    <None Include="sfml-system-d-3.dll" />
+    <None Include="sfml-window-3.dll" />
+    <None Include="sfml-window-d-3.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Sprites\enemy.png" />
+    <Image Include="Sprites\enemy128.png" />
+    <Image Include="Sprites\player.jpg" />
+    <Image Include="Sprites\player.png" />
+    <Image Include="Sprites\tilemap.png" />
+    <Image Include="Sprites\uv.png" />
+    <Image Include="Sprites\uv128.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

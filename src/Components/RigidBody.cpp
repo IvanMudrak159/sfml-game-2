@@ -1,0 +1,41 @@
+#include "Components/RigidBody.h"
+#include <SFML/System/Vector2.hpp>
+#include "Core/GameObject.h"
+#include "Core/GameWorld.h"
+
+RigidBody::RigidBody(GameObject* owner, RigidbodyType t, float m): Component(owner), type(t), mass(m)
+{
+	owner->getGameWorld()->getPhysicsSystem().Register(this);
+}
+
+RigidBody::~RigidBody()
+{
+	owner->getGameWorld()->getPhysicsSystem().Unregister(this);
+}
+
+void RigidBody::applyForce(const sf::Vector2f& force)
+{
+	if (type == RigidbodyType::Dynamic)
+	{
+		velocity += force / mass;
+	}
+}
+
+void RigidBody::setConstForce(const sf::Vector2f& force)
+{
+	if (type == RigidbodyType::Dynamic)
+	{
+		velocity = force;
+	}
+}
+
+
+void RigidBody::Update(float dt)
+{
+	Component::Update(dt);
+
+	if (type == RigidbodyType::Dynamic && owner)
+	{
+		owner->move(velocity * dt);
+	}
+}

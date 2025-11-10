@@ -66,235 +66,266 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BoxCollider.cpp">
-      <Filter>Source Files\Components</Filter>
+    <ClCompile Include="src\AI\BT\ActionNode.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>Source Files\Components</Filter>
+    <ClCompile Include="src\AI\BT\BehaviourTree.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteRenderer.cpp">
-      <Filter>Source Files\Components</Filter>
+    <ClCompile Include="src\AI\BT\ConditionNode.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicsSystem.cpp">
-      <Filter>Source Files\Systems</Filter>
+    <ClCompile Include="src\AI\BT\MoveToPointNode.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RenderSystem.cpp">
-      <Filter>Source Files\Systems</Filter>
+    <ClCompile Include="src\AI\BT\ParallelNode.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RigidBody.cpp">
-      <Filter>Source Files\Components</Filter>
+    <ClCompile Include="src\AI\BT\SelectorNode.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CollisionLevel.cpp">
-      <Filter>Source Files\Level</Filter>
+    <ClCompile Include="src\AI\BT\SequenceNode.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Level.cpp">
-      <Filter>Source Files\Level</Filter>
+    <ClCompile Include="src\AI\BT\WaitNode.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Tilemap.cpp">
-      <Filter>Source Files\Tilemap</Filter>
+    <ClCompile Include="src\AI\AgentAI.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Tile.cpp">
-      <Filter>Source Files\Tilemap</Filter>
+    <ClCompile Include="src\AI\AStar.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TileFactory.cpp">
-      <Filter>Source Files\Tilemap</Filter>
+    <ClCompile Include="src\AI\DebugAIAgentRenderer.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerController.cpp">
-      <Filter>Source Files\Scripts</Filter>
+    <ClCompile Include="src\AI\MapAI.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DebugHighlighter.cpp">
-      <Filter>Source Files\Components</Filter>
+    <ClCompile Include="src\AI\NodeAI.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Drawable.cpp">
-      <Filter>Source Files\Core</Filter>
+    <ClCompile Include="src\Components\BoxCollider.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source Files\Core</Filter>
+    <ClCompile Include="src\Components\DebugHighlighter.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files\Core</Filter>
+    <ClCompile Include="src\Components\RigidBody.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameWorld.cpp">
-      <Filter>Source Files\Core</Filter>
+    <ClCompile Include="src\Components\SpriteRenderer.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Plane.cpp">
-      <Filter>Source Files\Core</Filter>
+    <ClCompile Include="src\Core\Debug.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Times.cpp">
-      <Filter>Source Files\Core</Filter>
+    <ClCompile Include="src\Core\Drawable.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files\Scripts</Filter>
+    <ClCompile Include="src\Core\Game.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NodeAI.cpp">
-      <Filter>Source Files\AI</Filter>
+    <ClCompile Include="src\Core\GameObject.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MapAI.cpp">
-      <Filter>Source Files\AI</Filter>
+    <ClCompile Include="src\Core\GameWorld.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AStar.cpp">
-      <Filter>Source Files\AI</Filter>
+    <ClCompile Include="src\Core\Plane.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AgentAI.cpp">
-      <Filter>Source Files\AI</Filter>
+    <ClCompile Include="src\Core\Times.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BehaviourTree.cpp">
-      <Filter>Source Files\AI\BT</Filter>
+    <ClCompile Include="src\Levels\CollisionLevel.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SequenceNode.cpp">
-      <Filter>Source Files\AI\BT</Filter>
+    <ClCompile Include="src\Levels\Level.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ActionNode.cpp">
-      <Filter>Source Files\AI\BT</Filter>
+    <ClCompile Include="src\Scripts\Enemy.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WaitNode.cpp">
-      <Filter>Source Files\AI\BT</Filter>
+    <ClCompile Include="src\Scripts\Player.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MoveToPointNode.cpp">
-      <Filter>Source Files\AI\BT</Filter>
+    <ClCompile Include="src\Scripts\PlayerController.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Source Files\Scripts</Filter>
+    <ClCompile Include="src\Systems\PhysicsSystem.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DebugAIAgentRenderer.cpp">
-      <Filter>Source Files\AI</Filter>
+    <ClCompile Include="src\Systems\RenderSystem.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ParallelNode.cpp">
-      <Filter>Source Files\AI\BT</Filter>
+    <ClCompile Include="src\Tilemap\Tile.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Debug.cpp">
-      <Filter>Source Files\Core</Filter>
+    <ClCompile Include="src\Tilemap\TileFactory.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SelectorNode.cpp">
-      <Filter>Source Files\AI\BT</Filter>
-    </ClCompile>
-    <ClCompile Include="ConditionNode.cpp">
-      <Filter>Source Files\AI\BT</Filter>
+    <ClCompile Include="src\Tilemap\Tilemap.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BoxCollider.h">
-      <Filter>Header Files\Components</Filter>
+    <ClInclude Include="include\AI\BT\ActionNode.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SpriteRenderer.h">
-      <Filter>Header Files\Components</Filter>
+    <ClInclude Include="include\AI\BT\BehaviourTree.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PhysicsSystem.h">
-      <Filter>Header Files\Systems</Filter>
+    <ClInclude Include="include\AI\BT\BlackBoard.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RenderSystem.h">
-      <Filter>Header Files\Systems</Filter>
+    <ClInclude Include="include\AI\BT\ConditionNode.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>Header Files\Components</Filter>
+    <ClInclude Include="include\AI\BT\MoveToPointNode.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RigidBody.h">
-      <Filter>Header Files\Components</Filter>
+    <ClInclude Include="include\AI\BT\NodeBT.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Level.h">
-      <Filter>Header Files\Level</Filter>
+    <ClInclude Include="include\AI\BT\ParallelNode.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CollisionLevel.h">
-      <Filter>Header Files\Level</Filter>
+    <ClInclude Include="include\AI\BT\ScriptNode.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Tilemap.h">
-      <Filter>Header Files\Tilemap</Filter>
+    <ClInclude Include="include\AI\BT\SelectorNode.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Tile.h">
-      <Filter>Header Files\Tilemap</Filter>
+    <ClInclude Include="include\AI\BT\SequenceNode.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TileFactory.h">
-      <Filter>Header Files\Tilemap</Filter>
+    <ClInclude Include="include\AI\BT\WaitNode.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TileData.h">
-      <Filter>Header Files\Tilemap</Filter>
+    <ClInclude Include="include\AI\AgentAI.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerController.h">
-      <Filter>Header Files\Scripts</Filter>
+    <ClInclude Include="include\AI\AStar.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DebugHighlighter.h">
-      <Filter>Header Files\Components</Filter>
+    <ClInclude Include="include\AI\MapAI.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Drawable.h">
-      <Filter>Header Files\Core</Filter>
+    <ClInclude Include="include\AI\NodeAI.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files\Core</Filter>
+    <ClInclude Include="include\Components\BoxCollider.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Header Files\Core</Filter>
+    <ClInclude Include="include\Components\Component.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameWorld.h">
-      <Filter>Header Files\Core</Filter>
+    <ClInclude Include="include\Components\DebugAIAgentRenderer.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Plane.h">
-      <Filter>Header Files\Core</Filter>
+    <ClInclude Include="include\Components\DebugAIGridRenderer.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Times.h">
-      <Filter>Header Files\Core</Filter>
+    <ClInclude Include="include\Components\DebugHighlighter.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files\Scripts</Filter>
+    <ClInclude Include="include\Components\RigidBody.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NodeAI.h">
-      <Filter>Header Files\AI</Filter>
+    <ClInclude Include="include\Components\SpriteRenderer.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MapAI.h">
-      <Filter>Header Files\AI</Filter>
+    <ClInclude Include="include\Core\Debug.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AStar.h">
-      <Filter>Header Files\AI</Filter>
+    <ClInclude Include="include\Core\Drawable.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DebugAIGridRenderer.h">
-      <Filter>Header Files\AI</Filter>
+    <ClInclude Include="include\Core\Game.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AgentAI.h">
-      <Filter>Header Files\AI</Filter>
+    <ClInclude Include="include\Core\GameObject.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NodeBT.h">
-      <Filter>Header Files\AI\BT</Filter>
+    <ClInclude Include="include\Core\GameWorld.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BehaviourTree.h">
-      <Filter>Header Files\AI\BT</Filter>
+    <ClInclude Include="include\Core\Plane.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SequenceNode.h">
-      <Filter>Header Files\AI\BT</Filter>
+    <ClInclude Include="include\Core\Times.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ActionNode.h">
-      <Filter>Header Files\AI\BT</Filter>
+    <ClInclude Include="include\Levels\CollisionLevel.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WaitNode.h">
-      <Filter>Header Files\AI\BT</Filter>
+    <ClInclude Include="include\Levels\Level.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MoveToPointNode.h">
-      <Filter>Header Files\AI\BT</Filter>
+    <ClInclude Include="include\Scripts\Enemy.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Header Files\Scripts</Filter>
+    <ClInclude Include="include\Scripts\Player.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DebugAIAgentRenderer.h">
-      <Filter>Header Files\AI</Filter>
+    <ClInclude Include="include\Scripts\PlayerController.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BlackBoard.h">
-      <Filter>Header Files\AI\BT</Filter>
+    <ClInclude Include="include\Systems\PhysicsSystem.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ParallelNode.h">
-      <Filter>Header Files\AI\BT</Filter>
+    <ClInclude Include="include\Systems\RenderSystem.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SearchInRadiusNode.h">
-      <Filter>Header Files\AI\BT</Filter>
+    <ClInclude Include="include\Tilemap\Tile.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Debug.h">
-      <Filter>Header Files\Core</Filter>
+    <ClInclude Include="include\Tilemap\TileData.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SelectorNode.h">
-      <Filter>Header Files\AI\BT</Filter>
+    <ClInclude Include="include\Tilemap\TileFactory.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ScriptNode.h">
-      <Filter>Header Files\AI\BT</Filter>
+    <ClInclude Include="include\Tilemap\Tilemap.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ConditionNode.h">
-      <Filter>Header Files\AI\BT</Filter>
-    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
+    <None Include="sfml-audio-3.dll" />
+    <None Include="sfml-audio-d-3.dll" />
+    <None Include="sfml-graphics-3.dll" />
+    <None Include="sfml-graphics-d-3.dll" />
+    <None Include="sfml-network-3.dll" />
+    <None Include="sfml-network-d-3.dll" />
+    <None Include="sfml-system-3.dll" />
+    <None Include="sfml-system-d-3.dll" />
+    <None Include="sfml-window-3.dll" />
+    <None Include="sfml-window-d-3.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Sprites\enemy.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Sprites\enemy128.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Sprites\player.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Sprites\player.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Sprites\tilemap.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Sprites\uv.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Sprites\uv128.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
