@@ -10,8 +10,8 @@
 #include "BlackBoard.h"
 #include "GameObject.h"
 
-WaitNode::WaitNode(float waitTime)
-	: m_waitTime(waitTime), m_elapsed(0.f)
+WaitNode::WaitNode(const std::string& name, float waitTime)
+	: ActionNode(name), m_waitTime(waitTime), m_elapsed(0.f)
 {
 }
 

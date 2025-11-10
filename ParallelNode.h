@@ -15,8 +15,8 @@ enum class ParallelPolicy
 class ParallelNode : public NodeBT
 {
 public:
-    ParallelNode(ParallelPolicy policy = ParallelPolicy::RequireAllSuccess);
-    ParallelNode(std::vector<std::shared_ptr<NodeBT>> children,
+    ParallelNode(const std::string& name, ParallelPolicy policy = ParallelPolicy::RequireAllSuccess);
+    ParallelNode(const std::string& name, std::vector<std::shared_ptr<NodeBT>> children,
         ParallelPolicy policy = ParallelPolicy::RequireAllSuccess);
 
     NodeState Tick(float dt, BlackBoard& bb) override;

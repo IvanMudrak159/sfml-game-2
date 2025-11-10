@@ -1,7 +1,7 @@
 #include "ActionNode.h"
 
-ActionNode::ActionNode()
-	: started(false)
+ActionNode::ActionNode(const std::string& name)
+	: NodeBT(name), started(false)
 {
 }
 

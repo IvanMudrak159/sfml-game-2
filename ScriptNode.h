@@ -8,8 +8,8 @@ public:
     using TickFunc = std::function<NodeState(float, BlackBoard&)>;
     using DebugFunc = std::function<void(sf::RenderTarget&, sf::RenderStates, BlackBoard&)>;
 
-    ScriptNode(TickFunc tickFunc, DebugFunc debugFunc = nullptr)
-        : m_tickFunc(tickFunc), m_debugFunc(debugFunc)
+    ScriptNode(const std::string& name, TickFunc tickFunc, DebugFunc debugFunc = nullptr)
+	    : NodeBT(name), m_tickFunc(tickFunc), m_debugFunc(debugFunc)
     {
     }
 

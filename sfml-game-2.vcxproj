@@ -203,7 +203,6 @@
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="RigidBody.h" />
     <ClInclude Include="ScriptNode.h" />
-    <ClInclude Include="SearchInRadiusNode.h" />
     <ClInclude Include="SelectorNode.h" />
     <ClInclude Include="SequenceNode.h" />
     <ClInclude Include="SpriteRenderer.h" />

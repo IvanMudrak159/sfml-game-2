@@ -1,8 +1,8 @@
 #include "MoveToPointNode.h"
 #include "AgentAI.h"
 
-MoveToPointNode::MoveToPointNode(AgentAI* agent, const sf::Vector2f& target)
-    : m_agent(agent), m_target(target)
+MoveToPointNode::MoveToPointNode(const std::string& name, AgentAI* agent, const sf::Vector2f& target)
+	: ActionNode(name), m_agent(agent), m_target(target)
 {
 }
 

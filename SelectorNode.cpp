@@ -1,5 +1,9 @@
 #include "SelectorNode.h"
 
+SelectorNode::SelectorNode(const std::string& name): NodeBT(name)
+{
+}
+
 void SelectorNode::AddChild(std::shared_ptr<ConditionNode> child)
 {
     m_children.push_back(child);
@@ -7,19 +11,39 @@ void SelectorNode::AddChild(std::shared_ptr<ConditionNode> child)
 
 NodeState SelectorNode::Tick(float dt, BlackBoard& bb)
 {
-	m_activeChild = nullptr;
+    std::shared_ptr<ConditionNode> chosenChild = nullptr;
+
     for (auto& child : m_children)
     {
-        NodeState result = child->Tick(dt, bb);
+        NodeState result = child->TickCondition(bb);
 
-        if (result == NodeState::Success || result == NodeState::Running)
+        if (result != NodeState::ConditionFailed)
         {
-            m_activeChild = child;
-            return result;
+            chosenChild = child;
+            break;
         }
     }
 
-    return NodeState::Failure;
+    if (!chosenChild)
+    {
+        if (m_activeChild)
+        {
+            m_activeChild->Reset();
+        }
+        m_activeChild = nullptr;
+        return NodeState::Failure;
+    }
+
+    if (chosenChild != m_activeChild)
+    {
+        if (m_activeChild)
+        {
+            m_activeChild->Reset();
+        }
+        m_activeChild = chosenChild;
+    }
+
+    return m_activeChild->Tick(dt, bb);
 }
 
 void SelectorNode::DrawDebug(sf::RenderTarget& target, sf::RenderStates states, BlackBoard& bb)

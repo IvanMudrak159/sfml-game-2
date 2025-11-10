@@ -6,12 +6,14 @@
 class ConditionNode : public NodeBT
 {
 public:
-    ConditionNode(const std::function<bool(BlackBoard&)>& condition,
+    ConditionNode(const std::string& name, const std::function<bool(BlackBoard&)>& condition,
         const std::shared_ptr<NodeBT>& child, const std::function<void(sf::RenderTarget&, sf::RenderStates, BlackBoard&)>& debugFunc = nullptr);
 
     NodeState Tick(float dt, BlackBoard& bb) override;
+    NodeState TickCondition(BlackBoard& bb) const;
     void DrawDebug(sf::RenderTarget& target, sf::RenderStates states, BlackBoard& bb) override;
     NodeBT& GetChild() const { return *m_child; }
+    void Reset() override;
 
 private:
     const std::function<bool(BlackBoard&)> m_condition;

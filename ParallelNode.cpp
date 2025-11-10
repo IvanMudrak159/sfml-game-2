@@ -2,14 +2,14 @@
 
 #include <SFML/Graphics/RectangleShape.hpp>
 
-ParallelNode::ParallelNode(ParallelPolicy policy)
-    : m_policy(policy)
+ParallelNode::ParallelNode(const std::string& name, ParallelPolicy policy)
+	: NodeBT(name), m_policy(policy)
 {
 }
 
-ParallelNode::ParallelNode(std::vector<std::shared_ptr<NodeBT>> children,
-    ParallelPolicy policy)
-    : m_children(children), m_policy(policy)
+ParallelNode::ParallelNode(const std::string& name, std::vector<std::shared_ptr<NodeBT>> children,
+                           ParallelPolicy policy)
+	: NodeBT(name), m_children(children), m_policy(policy)
 {
 }
 

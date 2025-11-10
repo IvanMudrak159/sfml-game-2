@@ -7,7 +7,7 @@ class AgentAI;
 class MoveToPointNode : public ActionNode
 {
 public:
-    MoveToPointNode(AgentAI* agent, const sf::Vector2f& target);
+    MoveToPointNode(const std::string& name, AgentAI* agent, const sf::Vector2f& target);
 
 protected:
     void OnStart() override;

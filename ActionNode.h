@@ -4,7 +4,7 @@
 class ActionNode : public NodeBT
 {
 public:
-    ActionNode();
+    ActionNode(const std::string& name);
     NodeState Tick(float dt, BlackBoard& bb) override;
 
 protected:

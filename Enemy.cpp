@@ -8,7 +8,6 @@
 #include "ParallelNode.h"
 #include "SpriteRenderer.h"
 #include "RigidBody.h"
-#include "SearchInRadiusNode.h"
 #include "SequenceNode.h"
 #include "WaitNode.h"
 #include "Player.h"
@@ -29,15 +28,15 @@ Enemy::Enemy(const std::string& name, GameWorld& gameWorld, const Level* level):
 	sf::Vector2f targetPos = sf::Vector2f(100.f, 50.f);
 
 	// Patrol Sequence
-	auto moveToTarget = std::make_shared<MoveToPointNode>(agentAi, targetPos);
-	auto moveBack = std::make_shared<MoveToPointNode>(agentAi, startPos);
+	auto moveToTarget = std::make_shared<MoveToPointNode>("MoveToTarget", agentAi, targetPos);
+	auto moveBack = std::make_shared<MoveToPointNode>("MoveBack", agentAi, startPos);
 
-	auto patrolSequence = std::make_shared<SequenceNode>();
+	auto patrolSequence = std::make_shared<SequenceNode>("patrolSequence");
 
-	patrolSequence->AddChild(std::make_shared<WaitNode>(1.f));
 	patrolSequence->AddChild(moveToTarget);
-	patrolSequence->AddChild(std::make_shared<WaitNode>(1.f));
+	patrolSequence->AddChild(std::make_shared<WaitNode>("Wait", 1.f));
 	patrolSequence->AddChild(moveBack);
+	patrolSequence->AddChild(std::make_shared<WaitNode>("Wait", 1.f));
 
 	// ------
 
@@ -77,25 +76,25 @@ Enemy::Enemy(const std::string& name, GameWorld& gameWorld, const Level* level):
 
 	// DestroyScheduledObjects Sequence
 
-	auto destroyNode = std::make_shared<ScriptNode>(
+	auto destroyNode = std::make_shared<ScriptNode>("DestroyNode",
 		[this](float dt, BlackBoard& bb) -> NodeState {
 		Destroy();
 		return NodeState::Success;
 		}
 	);
 
-	auto destroySequence = std::make_shared<SequenceNode>();
+	auto destroySequence = std::make_shared<SequenceNode>("DestroySequence");
 
-	destroySequence->AddChild(std::make_shared<WaitNode>(3.f));
+	destroySequence->AddChild(std::make_shared<WaitNode>("DestroyWait", 3.f));
 	destroySequence->AddChild(destroyNode);
 
 	// ------
 
 
 	// Selector Node
-	auto selector = std::make_shared<SelectorNode>();
-	auto SearchForPlayerNode = std::make_shared<ConditionNode>(searchPlayerLambda, destroySequence, searchDebug);
-	auto PatrolConditionNode = std::make_shared<ConditionNode>([](BlackBoard& bb) { return true; }, patrolSequence);
+	auto selector = std::make_shared<SelectorNode>("SelectorNode");
+	auto SearchForPlayerNode = std::make_shared<ConditionNode>("SearchForPlayerNode", searchPlayerLambda, destroySequence, searchDebug);
+	auto PatrolConditionNode = std::make_shared<ConditionNode>("PatrolConditionNode", [](BlackBoard& bb) { return true; }, patrolSequence);
 	// --------------
 
 	selector->AddChild(SearchForPlayerNode);

@@ -8,7 +8,7 @@
 class SelectorNode : public NodeBT
 {
 public:
-    SelectorNode() = default;
+    SelectorNode(const std::string& name);
     void AddChild(std::shared_ptr<ConditionNode> child);
     NodeState Tick(float dt, BlackBoard& bb) override;
     void DrawDebug(sf::RenderTarget& target, sf::RenderStates states, BlackBoard& bb) override;
